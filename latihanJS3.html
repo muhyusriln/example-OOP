@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belajar 4 konsep yang ada di FP</title>
+</head>
+<script>
+  /* pure function */
+  /* jika diberikan atiribut PI dengan nilai let PI = 3.14 maka bisa dikatakan
+  impure function */
+  /* contoh 1 */
+  
+  const areaOfCircleCount1 = (jariJari) => {
+    return 3.14 * (jariJari * jariJari);
+  }
+
+  document.write(`Nilai PI = 3.14`);
+  document.write("<br>");
+  document.write(`Luas lingkaran dengan jari-jari 5cm = ${areaOfCircleCount1(5)} cm`);
+  document.write("<br>");
+  document.write(`Luas lingkaran dengan jari-jari 5cm = ${areaOfCircleCount1(5)} cm`);
+  document.write("<br>");
+  document.write(`Luas lingkaran dengan jari-jari 8cm = ${areaOfCircleCount1(8)} cm`);
+  document.write("<br>");
+  document.write(`Luas lingkaran dengan jari-jari 8cm = ${areaOfCircleCount1(8)} cm`);
+  document.write("<br>");
+
+  /* contoh 2 */
+  const createPersonWithAge = (age, person) => {
+    person.age = age;
+    return person;
+  }
+
+  const person = {
+    name: 'Sandi'
+  };
+  const newperson = createPersonWithAge(18, person);
+  console.log(
+    person, newperson
+  );
+</script>
+<body>
+  
+</body>
+</html>
