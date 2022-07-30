@@ -79,7 +79,7 @@
 
   const user = {
     firstName: 'Sandi',
-    lastName: 'Kurniawan' 
+    lastName: 'Kurniawan' // kesalahan penulisan
   }
 
   const renameLastNameUser = (newLastName, user) => {
@@ -92,7 +92,7 @@
   /* immutability */
   const user1 = {
     firstName: 'Sandi',
-    lastName: 'Kurniawan'
+    lastName: 'Kurniawan' // kesalahan penulisan
   }
 
   const createUserWithNewLastName = (newLastName1, user1) => {
@@ -102,7 +102,50 @@
   const newUser = createUserWithNewLastName('Mahardika', user1);
   console.log(newUser);
 
+  /* =========== Rekursif =========== */
+  /* contoh 1 */
+  /* code sintaksis iterasi */
+  
+  const countDown = start => {
+    do {
+      document.write(` ${start} `);
+      start -= 1;
+    }
+    while(start > 0);
+  };
+  
+  countDown(10);
+  document.write("<br>");
+  
+  /* code di atas ubah ke bentuk rekursifnya */
+  
+  const countDown1 = start1 => {
+    document.write(` ${start1} `);
+    if(start1 > 0) countDown1(start1-1);
+  }
+  
+  countDown1(10);
+  document.write("<br>");
 
+  /* =========== Higher-Order Function =========== */
+  /* contoh 1 */
+  const hello = () => {
+    console.log("Hello!");
+  }
+
+  const say = (someFunction) => {
+    someFunction();
+  }
+  
+  const sayHello = () => {
+    return () => {
+      console.log("Hello!");
+    }
+  }
+
+  hello();
+  say(hello);
+  sayHello()();
 </script>
 <body>
   
