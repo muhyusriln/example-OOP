@@ -7,7 +7,7 @@
   <title>Belajar 4 konsep yang ada di FP</title>
 </head>
 <script>
-  /* pure function */
+  /*=========== pure function =========== */
   /* jika diberikan atiribut PI dengan nilai let PI = 3.14 maka bisa dikatakan
   impure function */
   /* contoh 1 */
@@ -28,18 +28,81 @@
   document.write("<br>");
 
   /* contoh 2 */
+  /* pure function */
+  /* pure function tidak boleh menimbulkan efek samping (no side effect) ketika digunakan */
+
   const createPersonWithAge = (age, person) => {
-    person.age = age;
-    return person;
-  }
+    return {...person, age};
+  };
 
   const person = {
     name: 'Sandi'
   };
-  const newperson = createPersonWithAge(18, person);
-  console.log(
+
+  const newperson = createPersonWithAge(23, person);
+
+  console.log({
     person, newperson
-  );
+  });
+
+  /* impure function */
+  /* letak perbedaan pada impure function dengan pure function adalah objek lama terubah */
+
+  const createPersonWithAge1 = (age1, person1) => {
+    person1.age1 = age1;
+    return person1;
+  }
+  const person1 = {
+    name: 'Sandi'
+  };
+
+  const newperson1 = createPersonWithAge1(23, person1);
+
+  console.log({
+    person1, newperson1
+  });
+  document.write("<br>");
+
+  /* =========== immutability =========== */
+  /* contoh 1 */
+
+  const names = ['Harry', 'Ron', 'Jeff', 'Thomas'];
+  
+  const newNamesWithExMark = names.map((name) => `${names}!`)
+  
+  console.log({
+    names, newNamesWithExMark});
+    
+  /* contoh 2 */
+  /* kontras dari immutability yaitu mutable */
+  /* mutable */
+
+  const user = {
+    firstName: 'Sandi',
+    lastName: 'Kurniawan' 
+  }
+
+  const renameLastNameUser = (newLastName, user) => {
+    user.lastName = newLastName;
+  }
+
+  renameLastNameUser('Mahardika', user);
+  console.log(user);
+  
+  /* immutability */
+  const user1 = {
+    firstName: 'Sandi',
+    lastName: 'Kurniawan'
+  }
+
+  const createUserWithNewLastName = (newLastName1, user1) => {
+    return {...user1, lastName: newLastName1 }
+  }
+
+  const newUser = createUserWithNewLastName('Mahardika', user1);
+  console.log(newUser);
+
+
 </script>
 <body>
   
