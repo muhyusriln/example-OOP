@@ -146,6 +146,24 @@
   hello();
   say(hello);
   sayHello()();
+
+  const names1 = ['Harry', 'Ron', 'Jeff', 'Thomas'];
+
+  const arrayMap = (arr, action) => {
+    const loopTrough = (arr, action, newArray = [], index = 0) => {
+      const item = arr[index];
+      if(!item) return newArray;
+      return loopTrough(arr, action, [...newArray, action(arr[index])], index + 1);
+    }
+
+    return loopTrough(arr, action);
+  }
+  
+  const newNames = arrayMap(names1, (name) => `${name}!`);
+
+  console.log(names1, newNames);
+
+
 </script>
 <body>
   
