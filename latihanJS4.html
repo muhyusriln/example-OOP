@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Belajar berbagai macam array pada materi Higher-Order Function</title>
+</head>
+<body>
+  <script>
+    /* belajar menerapkan konsep-konsep yang ada di dalam paradigma FP yaitu
+    tentang materi reusable function */
+    /*=========== Array Map =========== */
+    /* contoh 1 */
+
+    /* membuat array baru di dalam sebuah function dengan mengembalikan nilai 
+    dari function yang dipanggil  */
+    const newArray = ['Harry', 'Ron', 'Jeff', 'Thomas'].map((name) => { return `${name}!`});
+
+    console.log(newArray);
+
+    /*=========== Array Filter =========== */
+    /* contoh 1 */
+    const truthArray = [1, '', 'Hallo', 0, null, 'Harry', 14].filter((item) => Boolean(item));
+    
+    console.log(truthArray);
+    
+    /* contoh 2 */
+    const students = [
+      {
+        name: 'Harry',
+        score: 60
+      },
+      {
+        name: 'James',
+        score: 88
+      },
+      {
+        name: 'Ron',
+        score: 90
+      },
+      {
+        name: 'Betty',
+        score: 75
+      }
+    ];
+    
+    const eligibleForScholarshipStudents = students.filter((student) => student.score > 85);
+
+    console.log(eligibleForScholarshipStudents);
+
+
+  </script>
+</body>
+</html>
