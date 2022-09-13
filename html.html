@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>Paradigma Functional Programming</h2> <br>
+  <p>Paradigma Functional Programming adalah paradigma pemrograman di mana proses 
+    komputasi didasarkan pada fungsi matematika murni. Functional Programming 
+    (selanjutnya akan kita singkat menjadi FP) ditulis dengan gaya deklaratif yang 
+    berfokus pada “what to solve” dibanding “how to solve” yang dianut oleh gaya 
+    imperatif.</p>
+    <p>JavaScript sendiri merupakan bahasa pemrograman yang mendukung paradigma FP. 
+      Banyak Higher-Order Function (kita akan bahas detail tentang ini nanti) yang bisa 
+      kita manfaatkan sebagai utilitas, salah satunya fungsi array map() di atas.</p>
+  
+  <h2>Paradigma Functional Programming</h2> <br>
+  <h3>Pure Function</h3>
+  <p>Pure Function merupakan konsep dari pembuatan fungsi yang mengharuskan fungsi untuk 
+    <b>tidak bergantung terhadap nilai yang berada di luar fungsi atau parameternya</b>.</p>
+  <p>lihat contoh pure function pada latihanJS3</p>
+
+  <h3>Immutability</h3>
+  <p>Konsep yang kedua adalah immutability. Immutable berarti sebuah objek tidak boleh 
+    diubah setelah objek tersebut dibuat. Kontras dengan mutable yang artinya objek 
+    boleh diubah setelah objek tersebut dibuat.</p>
+  <p>lihat contoh pure function pada latihanJS3</p>
+  
+  <h3>Rekursif</h3>
+  <p>Konsep selanjutnya yang ada di Functional Programming adalah rekursif. Apa itu 
+    rekursif? Rekursif merupakan teknik pada sebuah function yang memanggil dirinya 
+    sendiri.</p>
+  <p>lihat contoh pure function pada latihanJS3</p>
+  
+  <h3>Higher-Order Function</h3>
+  <p>JavaScript memiliki kemampuan First Class Functions, karena itu fungsi pada 
+    JavaScript dapat diperlakukan layaknya sebuah data. Kita bisa menyimpan function 
+    dalam variabel, memberikan function sebagai parameter pada fungsi lainnya, hingga 
+    mengembalikan function di dalam function.</p>
+  <p>Higher-Order Function merupakan fungsi yang dapat menerima fungsi lainnya pada 
+    argumen; mengembalikan sebuah fungsi; atau bahkan keduanya. Array map() merupakan 
+    salah satu contoh Higher-Order Function yang ada di JavaScript. Karena dalam 
+    penggunaanya,<b>ia menerima satu buah argumen yang merupakan sebuah function</b>.</p>
+  <p>lihat contoh pure function pada latihanJS3</p>
+  
+  <h2>Reusable Function</h2> <br>
+  <h3>Array Map</h3>
+  <p>Fungsi array.map() merupakan fungsi bawaan dari array yang sangat berguna dan 
+    banyak sekali digunakan. Fungsi ini dapat dipanggil dari sebuah data bertipe array 
+    dan menerima satu buah callback function.</p>
+  
+  <p>Callback function tersebut akan dipanggil sebanyak jumlah panjang array dan akan 
+    memiliki akses pada index array sesuai dengan iterasinya. Seperti yang Anda ketahui 
+    di awal, fungsi map akan mengembalikan array baru. Nilai tiap item pada array yang 
+    dikembalikan, dihasilkan dari kembalian callback function-nya. Karena callback 
+    function dapat mengakses item array, biasanya developer menggunakannya untuk 
+    menghasilkan nilai baru.</p>
+  <p>lihat contoh pure function pada latihanJS4</p>
+  
+  <h3>Array Filter</h3>
+  <p>Sama seperti array.map(), fungsi array.filter() merupakan fungsi bawaan dari data 
+    yang bertipe array di JavaScript. Sesuai namanya, fungsi ini sangat berguna untuk 
+    melakukan proses penyaringan (filtering) terhadap nilai array yang ada. Bila Anda 
+    memiliki kasus di mana Anda ingin menghilangkan beberapa item di array berdasarkan 
+    spesifikasi tertentu, fungsi ini sangatlah cocok Anda gunakan.</p>
+  
+  <p>Cara kerja fungsi ini mirip seperti array.map(). Namun, callback function dari 
+    fungsi ini harus mengembalikan boolean. Di mana nilai boolean ini digunakan untuk 
+    menentukan apakah item array lolos saring atau tidak.</p>
+  <p>lihat contoh pure function pada latihanJS4</p>
+
+
+</body>
+</html>
