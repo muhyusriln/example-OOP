@@ -36,7 +36,17 @@ function myFunction(p1, p2) {
 }
 document.getElementById('multipleNumber').innerHTML = myFunction(10, 20);
 
-// object created with advanced step
+// object simple
+const Person2 = {
+  firstName: "Lugie",
+  lastName: "Ahmad",
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+document.getElementById('person2').innerHTML = Person2.fullName();
+
+// object advanced
 function Person(firstName, lastName, age, status) {
   // property
   this.firstName = firstName,
@@ -55,9 +65,41 @@ function Person(firstName, lastName, age, status) {
     // return this.fullName + " is " + this.age + " years old " + " status as a " + this.status;
   }
   this.showName = function() {
-    document.getElementById('person').innerHTML = this.identityPerson();
+    document.getElementById('person1').innerHTML = this.identityPerson();
   }
 }
 
 const person1 = new Person("Muhammad", "Yusril Nugraha", 23, "freshgraduate");
 person1.showName();
+
+let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+document.getElementById('string').innerHTML = text.length;
+
+// jika ingin mengambil dari string ke-7 sampai dengan selanjutnya maka codenya => str.slice(7, 13)
+// substr() is similar to slice(), tetapi pada substr() method nya berupa -> substr(parameter, length)
+let str = "Apple, Banana, Kiwi";
+document.getElementById('stringSlice').innerHTML = str.slice(7, 13);
+
+// the replace() method replaces a specified value with another value in a string
+// by default, the replace() method is case sensitive. Writing CHERRY (with upper-case) will not work
+document.getElementById('stringReplace').innerHTML = str.replace("Kiwi", "Cherry");
+
+// to replace all matches, use a regular expression with a /g flag (global match)
+// example: text.replace(/P3nGG!4TC0d3/g, "Penggiat Code");
+function replaceClick() {
+  let text = document.getElementById('strReplaceClick').innerHTML;
+  document.getElementById('strReplaceClick').innerHTML = text.replace("P3nGG!4TC0d3", "Penggiat Code");
+}
+
+function toUpperCase() {
+  let text = document.getElementById('strToUpperCase').innerHTML;
+  document.getElementById('strToUpperCase').innerHTML = text.toUpperCase();
+}
+
+
+
+
+
+
+
+
