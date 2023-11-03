@@ -96,6 +96,25 @@ function toUpperCase() {
   document.getElementById('strToUpperCase').innerHTML = text.toUpperCase();
 }
 
+/* js method there are:
+  1. JavaScript String toLowerCase()
+  2. JavaScript String concat() => concat() join two or more strings
+  3. JavaScript String trim() => The trim() method removes whitespace from both sides of a string
+  4. JavaScript String trimStart() => The trimStart() method works like trim(), but removes whitespace only from the start of a string.
+  5. JavaScript String trimEnd => The trimEnd() method works like trim(), but removes whitespace only from the end of a string.
+  6. JavaScript String padStart() => The trimEnd() method works like trim(), but removes whitespace only from the end of a string.
+  7. JavaScript String
+  8. JavaScript String
+  9. JavaScript String
+*/
+
+// for example 6
+let text1 = "1";
+document.getElementById('strPadStart1').innerHTML = text1.padStart(5, "3");
+let numb = 5;
+let textPadStart = numb.toString();
+document.getElementById("strPadStart2").innerHTML = textPadStart.padStart(4,0);
+
 
 
 
