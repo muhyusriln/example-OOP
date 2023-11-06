@@ -1,124 +1,97 @@
-function myFunction() {
-  document.getElementById("inBetweenHead").innerHTML = "Paragraph changed.";
+console.log("Belajar Dasar pemrograman JavaScript");
+
+let x;
+console.log(typeof(x));           // undefined
+
+let y = 12.25;
+console.log(typeof(y));           // number
+
+/* Increment dan Decrement */
+let postfix = 5;
+console.log(postfix++);           // output 5
+console.log(postfix);             // output 6
+
+let prefix = 5;
+console.log(++prefix);            // output 6
+
+const bigNumber = 1234567890123456789012345678901234567890n;
+const myInt = 1234567890123456789012345678901234567890;
+
+console.log(bigNumber);             // output 1234567890123456789012345678901234567890n
+console.log(myInt);                // output 1.2345678901234568e+39
+
+/* determine value boolean between true and false */
+let x1 = 10;
+let y1 = 7
+
+let isGreeter = x1 > y1;
+let isLess = x1 < y1;
+let isEqual = x1 == y1;
+let isNotEqual = x1 != y1;
+
+console.log(isGreeter);       // true
+console.log(isLess);          // false
+console.log(isEqual);         // false
+console.log(isNotEqual);      // true
+
+/* determine value symbol */
+const id1 = Symbol("id");
+const id2 = Symbol("id");
+
+console.log(id1 == id2);      // false
+
+/* determine value operator same and indetic */
+const aString = "10";
+const aNumber = 10;
+
+console.log(aString == aNumber);      // true
+console.log(aString === aNumber);     // false
+
+/* case study in making decisions when it rains */
+
+let isRaining = false;
+
+console.log("Persiapan sebelum berangkat kegiatan.");
+if (isRaining) {
+  console.log("Perlu membawa payung karena mau hujan.");
+} 
+console.log("berangkat kegiatan.");
+
+/* condition ? true expression : false expression */
+
+const isMember = true;
+const discout = isMember ? 0.1 : 0;
+console.log(`Anda mendapatkan diskon sebesar ${discout * 100}%`);
+
+/* Switch case statement */
+let language = "Indonesian";
+let greeting = null;
+
+switch(language) {
+  case "English":
+    greeting = "Good Moring!";
+    break;
+  case "French":
+    greeting = "Bonjour!";
+    break;
+  case "Japanese":
+    greeting = "Ohayou Gazaimasu!";
+    break;
+  default:
+    greeting = "Selamat pagi!";
 }
 
-document.getElementById('firstText').innerHTML = "My First Web Page";
+console.log(greeting);
 
-let x = 2 + 3 + "5";
-document.getElementById('addingNumber').innerHTML = x;
-
-// create an Array
-const cars = ["Saab", "Volvo", "BMW"];
-// change an element
-cars[0] = "Toyota";
-// add an element
-cars.push("Audi");
-// display the Array
-document.getElementById('dataCar').innerHTML = cars;
-
-// create an object
-const car = {
-  type: "Fiat",
-  model: "500",
-  weight: "850kg",
-  color: "White"
-};
-
-// change a property
-car.color = "Blue";
-// add a property
-car.owner = "Yusril"
-// display the property
-document.getElementById('objectArray').innerHTML = "Car owner is " + car.owner;
-
-function myFunction(p1, p2) {
-  return p1 * p2;
-}
-document.getElementById('multipleNumber').innerHTML = myFunction(10, 20);
-
-// object simple
-const Person2 = {
-  firstName: "Lugie",
-  lastName: "Ahmad",
-  fullName: function() {
-    return this.firstName + " " + this.lastName;
-  }
-};
-document.getElementById('person2').innerHTML = Person2.fullName();
-
-// object advanced
-function Person(firstName, lastName, age, status) {
-  // property
-  this.firstName = firstName,
-  this.lastName = lastName,
-  this.age = age,
-  this.status = status
-
-  // method
-  this.fullName = function() {
-    return `${this.firstName} ${this.lastName}`
-  }
-
-  this.identityPerson = function() {
-    return `${this.firstName} ${this.lastName} is 
-    ${this.age} years old, status as a ${this.status}`;
-    // return this.fullName + " is " + this.age + " years old " + " status as a " + this.status;
-  }
-  this.showName = function() {
-    document.getElementById('person1').innerHTML = this.identityPerson();
-  }
+/* For of Loop */
+let myArray = ["Luke", "Han", "Chewbacca", "Leia"];
+for (const arrayItem of myArray) {
+  console.log(arrayItem);
 }
 
-const person1 = new Person("Muhammad", "Yusril Nugraha", 23, "freshgraduate");
-person1.showName();
-
-let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-document.getElementById('string').innerHTML = text.length;
-
-// jika ingin mengambil dari string ke-7 sampai dengan selanjutnya maka codenya => str.slice(7, 13)
-// substr() is similar to slice(), tetapi pada substr() method nya berupa -> substr(parameter, length)
-let str = "Apple, Banana, Kiwi";
-document.getElementById('stringSlice').innerHTML = str.slice(7, 13);
-
-// the replace() method replaces a specified value with another value in a string
-// by default, the replace() method is case sensitive. Writing CHERRY (with upper-case) will not work
-document.getElementById('stringReplace').innerHTML = str.replace("Kiwi", "Cherry");
-
-// to replace all matches, use a regular expression with a /g flag (global match)
-// example: text.replace(/P3nGG!4TC0d3/g, "Penggiat Code");
-function replaceClick() {
-  let text = document.getElementById('strReplaceClick').innerHTML;
-  document.getElementById('strReplaceClick').innerHTML = text.replace("P3nGG!4TC0d3", "Penggiat Code");
+/* While loop */
+let i = 1;
+while (i <= 5) {
+  console.log(i);
+  i++;
 }
-
-function toUpperCase() {
-  let text = document.getElementById('strToUpperCase').innerHTML;
-  document.getElementById('strToUpperCase').innerHTML = text.toUpperCase();
-}
-
-/* js method there are:
-  1. JavaScript String toLowerCase()
-  2. JavaScript String concat() => concat() join two or more strings
-  3. JavaScript String trim() => The trim() method removes whitespace from both sides of a string
-  4. JavaScript String trimStart() => The trimStart() method works like trim(), but removes whitespace only from the start of a string.
-  5. JavaScript String trimEnd => The trimEnd() method works like trim(), but removes whitespace only from the end of a string.
-  6. JavaScript String padStart() => The trimEnd() method works like trim(), but removes whitespace only from the end of a string.
-  7. JavaScript String
-  8. JavaScript String
-  9. JavaScript String
-*/
-
-// for example 6
-let text1 = "1";
-document.getElementById('strPadStart1').innerHTML = text1.padStart(5, "3");
-let numb = 5;
-let textPadStart = numb.toString();
-document.getElementById("strPadStart2").innerHTML = textPadStart.padStart(4,0);
-
-
-
-
-
-
-
-
