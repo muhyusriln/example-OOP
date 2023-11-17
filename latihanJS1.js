@@ -57,15 +57,59 @@ console.log("End of Array");
 
 /* ================= Spread Operator ================= */
 // spread operator
-const favorite = ["Seafood", "Salad", "Nugget", "Soup"];
-console.log(...favorite);
+const favorites = ["Seafood", "Salad", "Nugget", "Soup"];
+console.log(...favorites);
 const others = ["Cake", "Pie", "Donut"];
 console.log(...others);
-const allFood = [...favorite, ...others];
+
+const allFood = [...favorites, ...others];
 console.log(allFood);
 
+const obj1 = {firstName: 'Obi-Wan', age: 30};
+const obj2 = {lastName: 'Kenobi', gender: 'M'};
 
 
+const newObj = {...obj1, ...obj2};
+console.log(newObj);
+
+/* ================= Destructuring Object ================= */
+// code syntax destructuring object
+const profile = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 22,
+  address: "Mangga Dua",
+  passion: "Coding"
+  
+}
+// isMale default value is undefined
+const { firstName, lastName, age, address, passion, isMale } = profile;
+console.log(firstName, lastName, age, address, passion, isMale);
+
+// example assigning to different Local Variable Names
+const profileYusril = {
+  firstName: "Muhammad Yusril",
+  lastName: "Nugraha Putra",
+  age: 23,
+  addresstry: "Jl. Jati Lurus, Mangga Dua",
+  hobby: "Sport"
+}
+
+const { firstName: localFirstName, lastName: localLastName, age: localAge, addresstry, hobby } = profileYusril;
+console.log(localFirstName, localLastName, localAge);
+console.log(localLastName);
+console.log(localAge);
+
+/* ================= Destructuring Array ================= */
+// code syntax destructuring array
+const favoritesFood = ["Seafood", "Salad", "Nugget", "Soup"];
+
+const [firstFood, secondFood, thirdFood, fourthFood] = favoritesFood;
+
+console.log(firstFood);
+console.log(secondFood);
+console.log(thirdFood);
+console.log(fourthFood);
 
 
 
