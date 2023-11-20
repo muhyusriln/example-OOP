@@ -88,7 +88,65 @@ console.log(favorites[0], favorites[1], favorites[2], favorites[3]);
   [ 'Seafood', 'Salad', 'Nugget', 'Soup' ],
   [ 'Cake', 'Pie', 'Donut' ]
 ]
-Nilai array tidak akan tergabung. Alih-alih menggabungkan nilainya, variabel allFavorites menjadi array baru yang menampung dua array di dalamnya.
+- Nilai array tidak akan tergabung. Alih-alih menggabungkan nilainya, variabel allFavorites menjadi array baru yang menampung dua array di dalamnya. Selain array, spread operator juga bisa digunakan untuk object literals. 
+Hal ini memungkinkan kita dapat menggabungkan beberapa object dengan kode yang lebih ringkas.
+
+Iterasi object dan array adalah dua hal yang paling banyak digunakan dalam mengelola data di JavaScript. JSON (JavaScript Object Notation) merupakan format data paling populer yang digunakan dalam transaksi data saat ini.
+[
+  {
+    "id": 14,
+    "title": "Belajar Fundamental Aplikasi Android",
+    "author": "Google ATP"
+  },
+  {
+    "id": 51,
+    "title": "Belajar Membuat Aplikasi Android untuk Pemula",
+    "author": "Google ATP"
+  },
+  {
+    "id": 123,
+    "title": "Belajar Dasar Pemrograman Web",
+    "author": "Dicoding Indonesia"
+  },
+  {
+    "id": 163,
+    "title": "Belajar Fundamental Front-End Web Development",
+    "author": "Dicoding Indonesia"
+  }
+]
+- Jika kita lihat pada struktur JSON di atas, kita dapat menyimpulkan struktur tersebut dibangun dari array dan object. Karena kedua hal ini banyak digunakan untuk mengelola data pada JavaScript untuk memudahkan developer, 
+ES6 menambahkan fitur untuk destructuring object dan array.
+
+||======================= destructuring Object =======================||
+Penulisan sintaksis destructuring object pada ES6 menggunakan object literal ({ }) di sisi kiri dari operator assignment.
+# destructuring assignment
+Pada contoh sebelumnya, kita telah melakukan destructuring object pada deklarasi variabel. Namun, pada kasus tertentu mungkin kita perlu melakukannya pada variabel yang sudah dideklarasikan.
+Saat melakukan destructuring assignment, kita perlu menuliskan destructuring object di dalam tanda kurung. Jika tidak menuliskan tanda kurung, tanda kurung kurawal akan membuat JavaScript mengira kita membuat block statement, 
+sementara block statement tidak bisa berada pada sisi kiri assignment.
+# Default Values
+Ketika kita mendestruksikan objek dan menetapkan variabel dengan nama yang bukan merupakan properti dari objek, maka nilai dari variabel tersebut menjadi undefined.
+Alternatifnya, kita bisa secara opsional mendefinisikan nilai default pada properti tertentu jika tidak ditemukan. Untuk melakukanya, tambahkan tanda assignment (=) setelah nama variabel dan tentukan nilai default-nya seperti ini:
+
+
+||======================= destructuring Array =======================||
+- Destructuring array serupa dengan destructuring object. Object menggunakan tanda kurung kurawal { } sedangkan array menggunakan tanda kurung siku [ ]. Perbedaan lainnya adalah destructuring array bekerja berdasarkan posisi daripada penamaan propertinya.
+- Kita juga bisa memilih nilai pada index tertentu untuk destrukturisasi pada array. Contohnya, jika ingin mengambil nilai ketiga dari array, kita tidak perlu menyiapkan variabel lokal untuk menampung nilai array pertama, kedua, atau pun keempat. 
+Kita bisa melakukannya dengan membiarkan index array yang tidak kita inginkan tetap kosong (tanpa menulis variabel lokal) seperti ini:
+
+const [ , , thirdFood ] = favorites;
+console.log(thirdFood);
+
+-Untuk melakukan pertukaran nilai, kita membutuhkan variabel penengah. Pada contoh kode di atas menggunakan variabel temp. Variabel penengah dibutuhkan untuk menyimpan data sementara pada variabel yang akan ditukar. Hal ini menjadi kurang efektif 
+karena kita harus membuat variabel baru yang sebenarnya hanya bersifat sementara. Dengan array destructuring assignment, kita bisa menukar nilai variabel dengan mudah tanpa membuat variabel tambahan.
+
+||======================= Map =======================||
+
+- Map adalah tipe data yang menyimpan koleksi data dengan format key-value layaknya Object. Yang membedakan adalah Map memperbolehkan key dengan tipe data apa pun, dibandingkan Object yang hanya mengizinkan key bertipe String atau Symbol.
+Untuk mendefinisikan Map gunakan constructor seperti di bawah ini:
+const myMap = new Map();
+
+- Ketika sudah membuat objek Map, kita bisa mendapatkan nilainya berdasarkan key tertentu dengan metode get(). Lalu, untuk menambahkan pasangan key-value baru gunakan metode set().
+
 
 
 

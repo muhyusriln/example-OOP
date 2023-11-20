@@ -71,6 +71,7 @@ const obj2 = {lastName: 'Kenobi', gender: 'M'};
 
 const newObj = {...obj1, ...obj2};
 console.log(newObj);
+console.log("End of Spread Operator");
 
 /* ================= Destructuring Object ================= */
 // code syntax destructuring object
@@ -91,14 +92,15 @@ const profileYusril = {
   firstName: "Muhammad Yusril",
   lastName: "Nugraha Putra",
   age: 23,
-  addresstry: "Jl. Jati Lurus, Mangga Dua",
+  address: "Jl. Jati Lurus, Mangga Dua",
   hobby: "Sport"
 }
 
-const { firstName: localFirstName, lastName: localLastName, age: localAge, addresstry, hobby } = profileYusril;
+const { firstName: localFirstName, lastName: localLastName, age: localAge} = profileYusril;
 console.log(localFirstName, localLastName, localAge);
 console.log(localLastName);
 console.log(localAge);
+console.log("End of Desctructuring Object");
 
 /* ================= Destructuring Array ================= */
 // code syntax destructuring array
@@ -110,6 +112,105 @@ console.log(firstFood);
 console.log(secondFood);
 console.log(thirdFood);
 console.log(fourthFood);
+
+// example for destructuring assignment array
+let a = 5;
+let b = 8;
+
+console.log("sebelum swap");
+console.log("Nilai a: " + a);
+console.log("Nilai b: " + b);
+
+[a, b] = [b, a];            // menetapkan nilai a dengan nilai b dan nilai b dengan nilai a
+
+console.log("setelah swap");
+console.log("Nilai a: " + a);
+console.log("Nilai b: " + b);
+console.log("End of Destructuring Array");
+
+/* ================= Map ================= */
+
+const myMap = new Map([
+  ['1', 'a string key', true, 12],
+  [1, 'a number key'],
+  [true, true]
+]);
+
+console.log(myMap);
+
+const capital = new Map([
+  ["Jakarta", "Indonesia"],
+  ["London", "England"],
+  ["Tokya", "Japan"]
+]);
+
+console.log(capital.get("London"));
+console.log(capital.set("New Delhi", "India"));
+console.log(capital.size);
+console.log(capital.get("New Delhi"));
+
+const wrongMap = new Map();
+wrongMap["My Key"] = "My Value";
+
+console.log(wrongMap.has("My Key"));
+console.log(wrongMap.has("My Key"));
+console.log("End of Map");
+
+/* ================= Set ================= */
+// example set
+const numberSet = new Set([1, 4, 6, 5, 4, 1]);
+numberSet.add(10);        // menambahkan data set 
+numberSet.add(7);
+numberSet.add(2);
+numberSet.delete(1);      // menghapus data set
+console.log(numberSet);
+
+/* ================= Map =================
+const visitCountMap = new Map();            // menyimpan daftar user
+
+function countUser(user) {
+  let count = visitsCountMap.get(user) || 0;
+  visitCountMap.set(user, count + 1);
+}
+
+let jonas = { name: "Jonas", age: 30, hobby: "Coding" };
+countUser(jonas);             // menambahkan user "Jonas"
+
+jonas = null;         // data objek "jonas" dihapus
+
+// delay dibutuhkan untuk menunggu garbage collector bekerja
+setTimeout(function() {
+  console.log(visitsCountMap);
+}, 5000);
+
+*/
+
+const { inspect } = require('util');
+
+const visitCountMap = new WeakMap();        // menyimpan daftar user
+
+function countUser(user) {
+  let count = visitCountMap.get(user) || 0;
+  visitCountMap.set(user, count + 1);
+}
+
+let jonas = { name: "Jonas" };
+countUser(jonas);
+
+jonas = null;
+
+// delay dibutuhkan untuk menunggu garbage collector bekerja
+setTimeout(function() {
+  console.log(inspect(visitCountMap, {showHidden: true}));
+}, 5000);
+
+
+
+
+
+
+
+
 
 
 
