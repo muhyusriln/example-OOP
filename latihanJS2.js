@@ -23,7 +23,7 @@ greeting("Japanese", "Yusril");
 */
 
 // Declaration Function
-function greeting (language, name) {
+function greeting(language, name) {
   if(language === "English") {
     return `Good Morning ${name}`;
   } else if(language === "French") {
@@ -110,10 +110,65 @@ sayNameOneLine("Nadira Veronica Anidya");
 const sayHelloOneLine = () => console.log("Selamat pagi semuanya!");     // ketika body dari function hanya terdiri dari satu baris
 sayHelloOneLine();
 
-const exponentsFormulaOne = (a, b) => a ** b;
+const exponentsFormulaOne = (a, b) => a ** b;                            // ketika body dari function hanya terdiri dari satu baris
 console.log(exponentsFormulaOne(3, 3));
 
-/* ================= Rest Parameter ================= */
+/* ================= Closure ================= */
+// different closure function with closure return
+function init() {
+  const name = 'Obi Wan';         // variabel local di dalam scope fungsi init 
+
+  function greet() {           // iner function, merupakan contoh closure
+    console.log(`Halo, ${name}`);     // memanggil variabel yang dideklarasikan di parent function
+  }
+
+  greet();
+}
+
+init();
+
+// code with return function
+function initTest() {
+  const name = 'Luke Nies';         // variabel local di dalam scope fungsi initTest
+
+  function greet() {
+    console.log(`Halo, ${name}`);
+  }
+
+  return greet;
+}
+
+const myFunction = initTest();
+myFunction();
+
+// example declare a function global variable
+let counter = 0;
+
+const add = () => {
+  return ++counter;
+}
+
+console.log(add());
+console.log(add());
+counter = 23;
+console.log(add());
+console.log("End of example declare a function global variable");
+
+// example declare closure a function local variable
+const addFunction = () => {
+  let counter = 0;
+    return () => {
+      return ++counter;
+    };
+}
+
+const addCounter = addFunction();
+console.log(addCounter());
+console.log(addCounter());
+console.log(addCounter());
+
+console.log("End of example declare a function global variable");
+
 // code syntax Default Paramter
 /* ================= Rest Parameter ================= */
 // code syntax Default Paramter

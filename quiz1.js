@@ -30,4 +30,36 @@ const restaurant = {
 }
 
 console.log(restaurant.name);
-console.log(restaurant.favoriteDrink)
+console.log(restaurant.favoriteDrink);
+
+// membuat nilai perbandingan dari dua buah variabel dan mengembalikan nilai terkecil
+/*
+1. Buatlah fungsi bernama minimal dengan ketentuan berikut:
+ *    - Menerima dua buah argumen number, a dan b.
+ *    - Mengembalikan nilai terkecil antara a atau b.
+ *    - Bila nilai keduanya sama, maka kembalikan dengan nilai a
+ * 2. Buatlah fungsi bernama power dengan ketentuan berikut:
+ *    - Menerima dua buah argumen number, a dan b.
+ *    - Mengembalikan nilai dari hasil perkalian a sebanyak b (fungsi kuadrat).
+ *
+ *    contoh:
+ *    power(7, 3) // 343
+ *    power(3, 3) // 27
+ *    power(4, 0.5) // 2
+ */
+
+function minimal(a, b) {
+  if(a < b) {
+    return a;
+  } else if (a == b) {
+    return a;
+  } else {
+    return b;
+  }
+}
+
+console.log(minimal(5, 2));
+
+function power(a, b) {
+  
+}
