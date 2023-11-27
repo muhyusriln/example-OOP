@@ -63,3 +63,22 @@ console.log(minimal(5, 2));
 function power(a, b) {
   
 }
+
+// menentukan nilai yang paling kecil dan nilai yang paling besar dari sebuah data di dalam array
+
+function minMax(arrayOfNumbers) {
+  let currentMin = arrayOfNumbers[0];
+  let currentMax = arrayOfNumbers[0];
+  for (value of arrayOfNumbers) {
+    if(value < currentMin) {
+      currentMin = value;
+    } else if(value > currentMax) {
+      currentMax = value;
+    }
+  }
+
+  console.log(`currentMin: ${currentMin}, currentMax: ${currentMax}`);
+}
+
+minMax([-45, -36, -90, -3, -68, -21, 0, 12, 29, 49, 51, 80, 34, 73, 82, 999]);
+
