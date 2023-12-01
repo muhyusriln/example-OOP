@@ -78,7 +78,7 @@ exponentsFormula(7);
 console.log("End of Default Parameter");
 
 /* ================= Rest Parameter ================= */
-// code syntax Default Paramter
+// code syntax Rest Paramter
 
 function sum(...numbers) {
   let result = 0;

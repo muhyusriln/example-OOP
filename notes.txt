@@ -228,3 +228,15 @@ Namun, pada kasus di atas fungsi greet() yang diakses melalui fungsi MyFunction(
 - JavaScript tidak memiliki cara untuk mendeklarasikan suatu fungsi atau variabel menjadi private seperti bahasa Java. Sehingga sebuah fungsi atau variabel bisa diakses dari mana pun. Kenapa kita membutuhkan private method? Salah satunya adalah untuk membatasi akses ke fungsi atau variabel.
 Nilai counter akan bertambah ketika kita memanggil fungsi add(). Namun, kita juga bisa mengubah nilai counter secara langsung dengan assignment operator. Pada contoh program yang lebih kompleks, sebaiknya hal ini dihindari karena perubahan langsung pada nilai counter bisa saja memunculkan bug.
 
+Object-Oriented Programming di JavaScript
+
+- Object-oriented programming atau disingkat OOP merupakan paradigma pemrograman yang banyak diterapkan ketika membangun aplikasi. Paradigma OOP kental dengan konsep objek yang mengandung dua hal, yaitu atribut dan method.
+Di modul ini kita akan membahas beberapa hal terkait OOP, seperti:
+
+Pengertian paradigma Object-Oriented Programming.
+  1. Constructor function dan sintaks class di JavaScript.
+  2. Properti dan Method di dalam class.
+  3. Pewarisan.
+  4. Constructor dan method overriding.
+  5. Object composition.
+  6. Built-in class.
