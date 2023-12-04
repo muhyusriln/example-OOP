@@ -228,6 +228,8 @@ Namun, pada kasus di atas fungsi greet() yang diakses melalui fungsi MyFunction(
 - JavaScript tidak memiliki cara untuk mendeklarasikan suatu fungsi atau variabel menjadi private seperti bahasa Java. Sehingga sebuah fungsi atau variabel bisa diakses dari mana pun. Kenapa kita membutuhkan private method? Salah satunya adalah untuk membatasi akses ke fungsi atau variabel.
 Nilai counter akan bertambah ketika kita memanggil fungsi add(). Namun, kita juga bisa mengubah nilai counter secara langsung dengan assignment operator. Pada contoh program yang lebih kompleks, sebaiknya hal ini dihindari karena perubahan langsung pada nilai counter bisa saja memunculkan bug.
 
+
+
 Object-Oriented Programming di JavaScript
 
 - Object-oriented programming atau disingkat OOP merupakan paradigma pemrograman yang banyak diterapkan ketika membangun aplikasi. Paradigma OOP kental dengan konsep objek yang mengandung dua hal, yaitu atribut dan method.
@@ -240,3 +242,62 @@ Pengertian paradigma Object-Oriented Programming.
   4. Constructor dan method overriding.
   5. Object composition.
   6. Built-in class.
+
+Di OOP, objek merupakan sebuah entitas yang terdiri dari dua hal, yakni properties dan methods.
+1. Properti merupakan nilai di dalam objek yang menyimpan informasi tentang objek tersebut.
+2. Method merupakan fungsi yang menggambarkan aksi yang dapat dilakukan oleh objek tersebut.
+
+- Dalam memecahkan masalah ini, OOP menawarkan sebuah solusi yakni dengan membuat object blueprint. Melalui object blueprint, kita bisa membuat cetakan untuk membuat objek yang sudah terdefinisikan macam-macam properti dan method-nya. Sehingga kita cukup menggunakan cetakan tersebut 
+untuk membuat objek yang serupa, tetapi kita bisa menentukan nilai-nilai properti yang berbeda.
+
+- Mungkin saat ini Anda bertanya-tanya, bagaimana bisa membuat sebuah objek dengan sebuah fungsi? Itulah salah satu kemampuan fungsi di JavaScript. Fungsi di atas bukanlah fungsi biasa, melainkan constructor function. Berikut beberapa perbedaan yang harus Anda perhatikan.
+  1. Penamaan fungsi yang merupakan constructor function, secara konvensi harus ditulis dengan huruf kapital. Itulah alasan kami memberi nama fungsi tersebut Car, bukan car. Hal ini penting untuk Anda ikuti guna membedakan fungsi biasa dengan constructor function karena penggunaannya berbeda.
+  2. Constructor function dapat memanfaatkan keywordthis yang bernilai objek (instance) dirinya sendiri. Keywordthis dapat dimanfaatkan untuk mengakses nilai properti atau method dari objek tersebut. Contoh, kami menggunakan keyword this untuk menetapkan nilai properti brand dari argumen fungsi. 
+  Selain itu, di dalam method drive, kami juga menggunakan this untuk mendapatkan nilai properti brand dan color.
+  3. Constructor function memiliki internal property bernama prototype. Properti ini digunakan untuk mendefinisikan method-method yang akan dimiliki oleh objek yang dibuat. Alasan method perlu didefinisikan di dalam prototype agar mudah untuk diwarisi ketika melakukan pewarisan.
+  4. Terakhir, agar fungsi mengembalikan sebuah objek, Anda harus memanggilnya dengan menambahkan keyword new. Contoh, pada kode di atas, perhatikan cara kami memanggil fungsi Car untuk membuat objek car1, car2, dan car3.
+
+||======================= Properti dan Method =======================||
+- Di materi sebelumnya, Anda sudah tahu bahwa class (function constructor dalam JavaScript) merupakan sebuah object blueprint yang dapat membuat sebuah objek serupa lebih mudah. Dengan menggunakan class, kita bisa terhindar dari banyak duplikasi kode dalam membuat banyak objek sekaligus.
+
+- Lalu, bagaimana cara memproteksi agar nilai dari properti chassisNumber tidak dapat diubah? Nah, ketika kita berhadapan dengan kasus seperti ini, kita bisa memanfaatkan properti getter dan setter. Sebelum memecahkan masalah di atas, ketahuilah bahwa ada dua tipe properti, yaitu data property 
+dan accessor property. Data property merupakan properti yang sejauh ini kita lihat, properti yang langsung menampung sebuah nilai di dalam sebuah objek. Sedangkan accessor property merupakan properti yang dikontrol oleh sebuah getter dan setter. Nilai yang didapatkan dari properti tersebut 
+dikontrol oleh method get dan cara menetapkan nilai tersebut dikontrol oleh method set.
+
+- Di dalam class User, Anda bisa melihat bahwa terdapat data property firstName dan lastName. Nilai dari properti tersebut ditetapkan via argumen constructor. Selain itu, Anda juga bisa melihat sebuah method get fullName dan set fullName. Method tersebut merupakan accessor property yang mengatur 
+cara akses dari properti fullName.
+
+- Di dalam class User, Anda bisa melihat bahwa terdapat data property firstName dan lastName. Nilai dari properti tersebut ditetapkan via argumen constructor. Selain itu, Anda juga bisa melihat sebuah method get fullName dan set fullName. Method tersebut merupakan accessor property yang mengatur 
+cara akses dari properti fullName.
+
+- Sebab kita menetapkan getter dan setter untuk properti fullName, maka kita bisa mengakses properti tersebut melalui instance User. Ketika kita coba mendapatkan nilai properti fullName dengan cara user.fullName, method getter akan dijalankan dan nilai yang dikembalikan akan menjadi nilai dari properti tersebut. 
+Begitu juga ketika kita coba menetapkan nilai properti fullName dengan cara user.fullName = “Fulan Fulanah”, kode di dalam method setter akan dijalankan.
+
+- Catatan penting yang perlu Anda ketahui mengenai getter setter adalah:
+  1. method getter harus mengembalikan sebuah nilai dan nilai tersebut akan menjadi nilai properti;
+  2. method setter harus menerima satu argumen yang nilainya diambil dari operand ke dua ketika melakukan assignment operator.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

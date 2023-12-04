@@ -88,28 +88,10 @@ console.log("End of OOP person");
 class Check {};
 console.log(typeof Check);
 
-// instance class constructor
-class Komputer {
-// Nilai dari properti biasanya diambil dari dari argumen constructor agar nilainya dapat bervariasi setiap kali membuat instance.
-  constructor(monitor, powersuplyer, kipas, ram, keyboard, cpu, brandtype) {
-    this.monitor = monitor;
-    this.powersuplyer = powersuplyer;
-    this.kipas = kipas;
-    this.ram = ram;
-    this.keyboard = keyboard;
-    this.cpu = cpu;
-    // set a random brandtype
-    this.brandtype = `${brandtype}-${Math.floor(Math.random() * 1000000) + 1}`;
-  }
-}
-const komputer1 = new Komputer('LG', 'Phoenix', 'Corsair', 16, 'Fantech', 'Intel');
-komputer1.brandtype = 'Asus-202';
-console.log(komputer1);
-
-
 // example accessor property syntax
+// Nilai dari properti biasanya diambil dari dari argumen constructor agar nilainya dapat bervariasi setiap kali membuat instance.
 class Mail {
-  constructor(sender, receiver, subject, body) {
+  constructor(sender, receiver, subject, body) {                // instance class constructor
     this.sender = sender;
     this.receiver = receiver;
     this.subject = subject;
@@ -121,17 +103,145 @@ class Mail {
   }
 
   set sendingMail(sendingMail) {
-    const [sender, receiver, subject, body] = sendingMail.split(' ');
+    const [sender, receiver, subject, body] = sendingMail.split(',');
     this.sender = sender,
     this.receiver = receiver,
     this.subject = subject,
     this.body = body
   }
+
+  // methods
+  send(message) {
+    console.log(`Sending mail from ${this.sender} to ${this.receiver} is ${message}`);
+  }
+
+  sendLater(delay) {
+    console.log(`Sending after ${delay} ms`);
+
+    setTimeout(() => {
+      this.send();
+    }, delay);
+  }
+
+  saveAsDraft() {
+    console.log('Saving mail as draft');
+  }
+
 }
 
 const mail1 = new Mail('M. Yusril Nugraha', 'Lugie Nur Ahmad', 'Kerja sama', 'Hari senin kita akan bekerja sama terkait lahan perkebunan di Sleman');
 console.log(mail1);
 console.log(mail1.sendingMail);
+mail1.saveAsDraft();
+mail1.send('salam'); 
+mail1.sendLater(3000);
+
+mail1.sendingMail = 'Lugie Nur Ahmad, Rifqi Palisuri Palsam, kuliah di UII, halo kawan teknik Informatika apa kabar?';
+console.log(mail1);
+console.log(mail1.sendingMail);
+console.log("End of OOP Mail");
+
+class Komputer {
+  constructor(monitor, powersuplyer, kipas, ram, keyboard, cpu, brand) {
+    this.monitor = monitor;
+    this.powersuplyer = powersuplyer;
+    this.kipas = kipas;
+    this.ram = ram;
+    this.keyboard = keyboard;
+    this.cpu = cpu;
+    this.brand = brand;
+    // set a random type
+    this._type = `${brand}-${Math.floor(Math.random() * 1000000) + 1}`;
+  }
+  get type() {
+    return this._type;
+  }
+
+  set type(type) {
+    console.log(`you are not allowed to change the type number ${type}`);
+  }
+
+  // methods
+  working() {
+    console.log(`Komputer ${this.brand} with type ${this.type} is working`);
+  }
+
+  playingMusic() {
+    console.log(`Komputer ${this.brand} with type ${this.type} can be played music`);
+  }
+
+  playingGame() {
+    console.log(`Komputer ${this.brand} with type ${this.type} can be played game`);
+  }
+}
+
+const komputer1 = new Komputer('LG', 'Phoenix', 'Corsair', 16, 'Fantech', 'Intel', 'Hp');
+console.log(komputer1);
+komputer1.type = 'Asus-202';
+console.log(komputer1.type);
+
+/* =========================== Inheritance =========================== */
+// code syntax Inheritance
+
+class MailService {                   // superclass
+  constructor(sender) {
+    this.sender = sender;
+  }
+
+  sendMessage(message, receiver) {
+    console.log(`${this.sender} sent ${message} to ${receiver}`)
+  }
+}
+
+
+class WhatsAppService extends MailService {               // subclass
+  sendBroadcastMessage(message, receivers) {
+    for (const receiver of receivers) {
+      this.sendMessage(message, receiver);
+    }
+  }
+
+  // overriding constructor
+  constructor(sender, isBusiness) {
+    super(sender);
+    this.isBusiness = isBusiness;
+  }
+
+  // overrding method
+  sendMessage(message, receiver) {
+    // memanggil method sendMessage pada superclass
+    super.sendMessage(message, receiver);
+    
+    console.log('message sent via WhatsApp'); 
+  }
+
+}
+
+class EmailService extends MailService {                  // subclass
+  sendDelayedMessage(message, receiver, delay) {
+    setTimeout(() => {
+      this.sendMessage(message, receiver)
+    }, delay);
+  }
+
+}
+
+const whatsapp = new WhatsAppService('+6285304829282');
+const email = new EmailService('yusrilnugrahaputra@gmail.com');
+// overriding constructor
+const mailService = new MailService('someSender');
+const whatsappBusiness = new WhatsAppService('+6285146229444', true);
+console.log(whatsappBusiness);
+mailService.sendMessage('Hai, apa kabar?', 'someReceiver');
+whatsappBusiness.sendMessage('Hai, apa kabar?', +6282195633222);
+
+whatsapp.sendMessage('Hello', '+6281928394857');
+whatsapp.sendBroadcastMessage('Selamat sore!', ['+6281928394857', '+62820945840308']);
+
+
+email.sendDelayedMessage('Hello, Ali. Apa kabar?', 'alidjalaluddin@gmail.com', 2000);
+email.sendMessage('tetap semangat!', 'alidjalaluddin@gmail.com');
+
 
 
 
