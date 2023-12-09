@@ -242,6 +242,143 @@ whatsapp.sendBroadcastMessage('Selamat sore!', ['+6281928394857', '+628209458403
 email.sendDelayedMessage('Hello, Ali. Apa kabar?', 'alidjalaluddin@gmail.com', 2000);
 email.sendMessage('tetap semangat!', 'alidjalaluddin@gmail.com');
 
+console.log("End of Inheritance");
+
+/* =========================== Object Composition =========================== */
+// code syntax Object Composition
+
+class Developer {
+  constructor(name) {
+    this.name = name;
+  }
+
+  commitChanges() {
+    console.log(`${this.name} is committing changes...`);
+  }
+}
+
+function canBuildUI(developer) {
+  return {
+    buildUI: () => {
+      console.log(`${developer.name} is building UI...`);
+    }
+  }
+}
+
+function canBuildAPI(developer) {
+  return {
+    buildAPI: () => {
+      console.log(`${developer.name} is building API...`);
+    }
+  }
+}
+
+function canDeployApp(developer) {
+  return {
+    buildApp: () => {
+      console.log(`${developer.name} is deploying app...`);
+    }
+  }
+}
+
+// object creator function
+function createFrontEndDeveloper(name) {
+  const developer = new Developer(name);
+  return Object.assign(developer, canBuildUI(developer));
+}
+
+function createBackEndDeveloper(name) {
+  const developer = new Developer(name);
+  return Object.assign(developer, canBuildAPI(developer));
+}
+
+function createDevOps(name) {
+  const developer = new Developer(name);
+  return Object.assign(developer, canDeployApp(developer));
+}
+
+function createfullStackDeveloper(name) {
+  const developer = new Developer(name);
+  return Object.assign(developer, canBuildUI(developer), canBuildAPI(developer), canDeployApp(developer));
+}
+
+// Outout with object composition
+const frontEndDeveloper = createFrontEndDeveloper('Yusril');
+frontEndDeveloper.commitChanges();
+frontEndDeveloper.buildUI();
+console.log(`is ${frontEndDeveloper.name} developer?`, frontEndDeveloper instanceof Developer);
+
+const backEndDeveloper = createBackEndDeveloper('Teguh');
+backEndDeveloper.commitChanges();
+backEndDeveloper.buildAPI();
+console.log(`is ${backEndDeveloper.name} developer?`, backEndDeveloper instanceof Developer);
+
+const devOps = createDevOps('Henry');
+devOps.commitChanges();
+devOps.buildApp();
+console.log(`is ${devOps.name} developer`, devOps instanceof Developer);
+
+const fullstackDeveloper = new createfullStackDeveloper('M. Yusril Nugraha');
+fullstackDeveloper.buildAPI();
+fullstackDeveloper.buildUI();
+fullstackDeveloper.buildApp();
+console.log(`is ${fullstackDeveloper.name} developer?`, fullstackDeveloper instanceof Developer);
+console.log("End of Object Composition");
+
+/* =========================== Built-in class =========================== */
+// code syntax Built-in class
+
+const date = new Date();
+
+const timeInJakarta = date.toLocaleString('id-ID', {
+  timeZone: 'Asia/Jakarta',
+});
+
+const timeInJapan = date.toLocaleString('ja-JP', {
+  timeZone: 'Asia/Tokyo',
+});
+
+const timeInMakassar = date.toLocaleString('id-ID', {
+  timeZone: 'Asia/Makassar',
+});
+
+// output
+console.log(timeInJakarta);
+console.log(timeInJapan);
+console.log(timeInMakassar);
+
+// example built-in class array
+class UniqueArray extends Array {
+  constructor(...args) {
+    // make sure args is unique before passing it to super
+    const uniqueValue = args.filter((item, index) => args.indexOf(item) === index);
+
+    super(...uniqueValue);
+  }
+
+  push(item) {
+    // make sure only unique item is added
+    if(!this.includes(item)) {
+      super.push(item);
+    }
+  }
+}
+
+const someArray = new UniqueArray('a', 'b', 'c', 'a', 'b', 'c');
+console.log(someArray);
+someArray.push('d');
+console.log(someArray);
+someArray.push('a');
+console.log(someArray);
+
+
+
+
+
+
+
+
+
 
 
 
