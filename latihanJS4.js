@@ -99,11 +99,36 @@ const createUserWithNewLastName = (newLastName, user) => {
 const newUser = createUserWithNewLastName('Potter', user);
 console.log(newUser);
 
+/* =========================== High-Order Function =========================== */
+// code syntax High-Order Function
+const hello = () => {
+  console.log('Hello Yusril!');
+}
 
+const say = (someFunction) => {
+  someFunction();
+}
 
+const sayHello = () => {
+  return () => {
+    console.log('Hello World!');
+  }
+}
 
+hello();
+say(hello);
+sayHello()();
 
+// code syntax Reusable Function
+const newArray = ['Harry', 'Ron', 'Jefry', 'Felix', 'Kale', 'Thomas'].map((name) => { return `${name}!`});
+console.log(newArray);
 
+const truthyArray = ['Harry', 0, null, false, true, 193, 0.4739, undefined].filter((value) => { return value});
+console.log(truthyArray);
+
+const array = [1, 2, 3, 4, 5];
+const even = array.some(element => element % 2 === 0);
+console.log(even);
 
 
 

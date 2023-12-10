@@ -345,11 +345,20 @@ Kita cukup fokus pada “what to solve” alias apa yang ingin kita selesaikan a
   2. Hanya bergantung pada argumen yang diberikan.
   3. Tidak menimbulkan efek samping.
 
+||======================= Immotability =======================||
+- Konsep yang kedua adalah immutability. Immutable berarti sebuah objek tidak boleh diubah setelah objek tersebut dibuat. Kontras dengan mutable yang artinya objek boleh diubah setelah objek tersebut dibuat.
 
+- Konsep immutability sangat kental pada paradigma FP. Anda bisa lihat sebelumnya pada contoh penggunaan array map. Ketika menggunakan array.map(), alih-alih ia mengubah nilai dari array itu sendiri, malah ia membuat atau menghasilkan array baru.
 
+||======================= High =======================||
+- JavaScript memiliki kemampuan First Class Functions, karena itu fungsi pada JavaScript dapat diperlakukan layaknya sebuah data. Kita bisa menyimpan function dalam variabel, memberikan function sebagai parameter pada fungsi lainnya, hingga mengembalikan function di dalam function.
 
+- Higher-Order Function menjadi bagian konsep pada paradigma FP. Higher-Order Function merupakan fungsi yang dapat menerima fungsi lainnya pada argumen; mengembalikan sebuah fungsi; atau bahkan keduanya.
 
-
+Teknik Higher-Order Function biasanya digunakan untuk:
+  1. Mengabstraksi atau mengisolasi sebuah aksi, event, atau menangani alur asynchronous menggunakan callback, promise, dan lainnya.
+  2. Membuat utilities yang dapat digunakan di berbagai tipe data.
+  3. Membuat teknik currying atau function composition.
 
 
 
