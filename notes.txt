@@ -317,13 +317,33 @@ kita tidak perlu menulis kode yang berulang pada setiap subclass.
 - Solusinya adalah meninggalkan pewarisan dan gunakan teknik object composition. Jika Anda lihat kembali kode di atas, pewarisan mendorong kita untuk menstrukturkan kode dengan pendekatan peran atau identitas class, yakni Front-End Developer, Back-End Developer, DevOps, dan Full-Stack Developer. 
 Sedangkan object composition, dia tidak memperdulikan peran, melainkan kode distrukturkan berdasarkan kemampuan yang dapat dilakukan, seperti buildUI(), buildAPI(), dan deployApp().
 
+- Dengan memecah kode berdasarkan kemampuan, ke depannya kita akan lebih mudah dalam membuat objek dengan peran apa pun, mau Front-End Developer, Back-End Developer, DevOps, Full-Stack, atau peran lain yang membutuhkan kombinasi dari kemampuan-kemampuan yang ada, tanpa ada kode yang repetitif.
+
+- Agar lebih mudah dalam membuat objek, kita bisa membuat sebuah fungsi sebagai object creator dengan mengomposisikan kemampuan-kemampuan yang dibutuhkan. Di JavaScript, kita bisa secara mudah mengomposisikan objek dengan menggunakan method Object.assign().
+
+||======================= Object composition =======================||
+- Di JavaScript sudah terdapat built-in class atau class bawaan, seperti Date, Object, Array, Math, dan String. Class bawaan dapat kita manfaatkan untuk berbagai hal, mulai dari manipulasi data-data terkait dengan array, operasi matematika, manipulasi karakter, ataupun manipulasi objek.
+
+- Date merupakan class bawaan JavaScript yang digunakan untuk utilitas terkait tanggal dan waktu. Class ini sangat membantu ketika program yang kita buat terdapat penggunaan dan manipulasi tanggal dan waktu. Kita bisa mudah untuk mendapatkan waktu dalam bentuk instance Date atau mengonversinya 
+ke dalam berbagai format yang kita inginkan.
+
+- Lihat! Betapa mudahnya kita mendapatkan data waktu di JavaScript dengan menggunakan class bawaan Date. Selain yang kami contohkan, masih banyak hal yang bisa kita lakukan dengan class Date. Anda bisa eksplorasi fitur-fitur dari class Date pada dokumentasi berikut: Date() constructor.
 
 
+||======================= Paradigma Functional Programming =======================||
+- Paradigma Functional Programming adalah paradigma pemrograman di mana proses komputasi didasarkan pada fungsi matematika murni. Functional Programming (selanjutnya akan kita singkat menjadi FP) ditulis dengan gaya deklaratif yang berfokus pada “what to solve” dibanding “how to solve” yang dianut oleh gaya imperatif.
 
+- Coba bandingkan dengan kode sebelumnya, tentu ini jauh lebih mudah dibaca dan ringkas. Yap! Inilah yang disebut dengan gaya deklaratif. Kita tidak perlu pusing untuk memikirkan cara manual untuk mencapai sebuah tujuan. Tidak ada proses looping manual; Tidak perlu tahu kapan harus berhenti dari looping; 
+Kita cukup fokus pada “what to solve” alias apa yang ingin kita selesaikan atau capai.
 
+- JavaScript sendiri merupakan bahasa pemrograman yang mendukung paradigma FP. Banyak Higher-Order Function (kita akan bahas detail tentang ini nanti) yang bisa kita manfaatkan sebagai utilitas, salah satunya fungsi array map() di atas.
 
+- Salah satu konsep besar dari paradigma FP adalah Pure Function. Apa artinya? Pure Function merupakan konsep dari pembuatan fungsi yang mengharuskan fungsi untuk tidak bergantung terhadap nilai yang berada di luar fungsi atau parameternya.
 
-
+- Agar lebih mudah dalam mengetahui apakah fungsi yang Anda buat sudah pure atau belum, pastikan 3 konsep ini ada pada fungsi yang Anda buat.
+  1. Mengembalikan nilai yang sama bila inputannya (nilai parameter) sama.
+  2. Hanya bergantung pada argumen yang diberikan.
+  3. Tidak menimbulkan efek samping.
 
 
 
