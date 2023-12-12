@@ -130,5 +130,34 @@ const array = [1, 2, 3, 4, 5];
 const even = array.some(element => element % 2 === 0);
 console.log(even);
 
+const months = ['March', 'Jan', 'Feb', 'Des'];
+months.sort();
+console.log(months);
 
+// fungsi sort untuk mengurutkan
+const array1 = [1, 30, 4, 101, 1000, 121, -42];
+array1.sort();
+console.log(array1);
+
+// fungsi sort dibuat urut dari terkecil sampai terbesar
+const compareNumber = (a, b) => {
+  return a - b;
+}
+const array2 = [1, 30, 4, 700, 54, 101, 203, 2500];
+const sorting = array2.sort(compareNumber);
+console.log(sorting);
+
+// fungsi every
+const scores = [70, 85, 90];
+const minimumScore = 65;
+
+const examPassed = scores.every(score => score >= minimumScore);
+console.log(examPassed);
+
+// fungsi ForEach
+const names2 = ['Yusril', 'Rizki', 'Isnu', 'Jalu', 'Teguh', 'Henry'];
+
+names2.forEach((name) => {
+  console.log(`Hello, ${name}!`);
+});
 
