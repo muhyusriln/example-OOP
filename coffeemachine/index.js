@@ -1,5 +1,5 @@
 // const {coffeeStock, isCoffeeMachineReady} = require('./state');  // cara import state.js dengan 2 object
-import coffeeStock from './state.js';
+import { coffeeStock as stock, isCoffeeMachineReady} from './state.js';
 
 // membuat fungsi membuat kopi
 /*
@@ -15,15 +15,16 @@ makeCoffee("robusta", 80);
 */
 
 // console.log(coffeeStock);
-// console.log(isCoffeeMachineReady);
+console.log(stock);
+console.log(isCoffeeMachineReady);
 
-const displayStock = stock => {
-  for(const type in stock) {
-    console.log(type);
-  }
-}
+// const displayStock = stock => {
+//   for(const type in stock) {
+//     console.log(type);
+//   }
+// }
 
-displayStock(coffeeStock);
+// displayStock(coffeeStock);
 
 
 
