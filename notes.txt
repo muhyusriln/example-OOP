@@ -403,8 +403,23 @@ untuk memanggil fungsi callback-nya saja, tak lebih dari itu.
 - Melalui fungsi ini, Anda dapat mengubah sintaks perulangan berdasarkan jumlah array secara imperatif menjadi deklaratif.
 
 ||======================= Setup Environment =======================||
-- Berkas yang telah dibuat akan digunakan untuk menyimpan informasi aplikasi yang kita buat. Untuk membuat berkas package.json, sebenarnya kita dapat membuatnya sendiri layaknya membuat berkas baru pada umumnya. Namun, cara tersebut bukan pendekatan yang baik. Dalam membuat berkas package.json, 
-sebaiknya gunakan perintah npm init pada Terminal di dalam project yang kita buat.
+- Berkas yang telah dibuat akan digunakan untuk menyimpan informasi aplikasi yang kita buat. Untuk membuat berkas package.json, sebenarnya kita dapat membuatnya sendiri layaknya membuat berkas baru pada umumnya. Namun, cara tersebut bukan pendekatan yang baik. 
+Dalam membuat berkas package.json, sebaiknya gunakan perintah npm init pada Terminal di dalam project yang kita buat.
+
+||======================= Export Import =======================||
+- Modul bekerja dengan cara exporting dan importing nilai. Baik itu nilai variabel, fungsi, array, object, atau class agar bisa digunakan pada berkas JavaScript lain. Satu berkas JavaScript terdiri dari satu module yang dapat kita export menjadi lebih dari satu nilai.
+
+- Dalam environment Node.js, gunakan perintah module.exports untuk melakukan proses export module. Setiap berkas JavaScript yang berjalan pada Node, memiliki objek module lokal yang memiliki properti exports. Properti tersebut digunakan untuk mendefinisikan nilai 
+apa yang akan diekspor dari berkas tersebut.
+
+Tips: Jika kita menggunakan lokasi yang relatif (dapat berubah/dipindahkan), pastikan awali dengan menuliskan ./. Contohnya, berkas index.js dan state.js berada pada folder yang sama, maka kita cukup menuliskannya dengan ./state.js.
+
+||======================= ES6 Module =======================||
+- Pada Node.js sebelumnya tidak ada perbedaan antara export satu atau beberapa nilai. Semua nilai yang akan diekspor dijadikan nilai dari properti module.exports. Pada ES6 module, jika kita hanya mengekspor satu nilai pada sebuah berkas JavaScript 
+baik itu primitive value, function, array, object, atau class, kita gunakan keyword export default. Contohnya seperti ini:
+
+- Sekarang jalankan kode di atas pada project Anda. Apakah muncul eror seperti berikut? Jika iya, itu disebabkan karena berkas JavaScript yang kita buat tidak dianggap sebagai module. Saat ini, fitur ES6 module tidak secara default diaktifkan. 
+Pesan eror di atas menyebutkan dua cara bagaimana mengaktifkan ES6 module. Dua cara tersebut adalah menambahkan properti pada package.json atau dengan mengubah ekstensi .js menjadi .mjs. Mari kita gunakan cara pertama yang lebih sederhana. 
 
 
 
