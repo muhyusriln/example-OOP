@@ -17,6 +17,24 @@ catch(error) {
 
 /* =========================== Throwing Errors =========================== */
 // code syntax used throwing error
+// const myError = new Error("Ini adalah error saya");
+// throw myError;
+const getEvenNumber = (array) => {
+  console.log(typeof array);
+  if(!(typeof array === 'object')) {
+    throw new Error('Parameter array haruslah sebuah object (array).');
+  }
+  if(!Array.isArray(array)) {
+    throw new Error('Parameter array haruslah sebuah array.');
+  }
+  const filteredArray = array.filter((item) => {
+    return item % 2 === 0;
+  });
+  return filteredArray;
+}
+const myArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];            // array type datanya adalah object
+console.log(getEvenNumber({satu: 1, dua: 2, tiga: 3, empat: 4}));
+
 const json = '{"name": "John Doe", "age": 25 }';          // parsing dari variabel json (string) menjadi sebuah object
 // const json = '{ "age": 25 }';          // contoh variabel name tidak diinisiasikan
 // const json = '{ bad json }';       // contoh wrong code syntax

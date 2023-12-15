@@ -133,21 +133,21 @@ if(x !== z) {
 }
 
 // TODO 1
-class validationError extends Error {
+class ValidationError extends Error {
 	constructor(message) {
 	super(message);
-    this.name = "validationError";
+    this.name = "ValidationError";
 	}
 }
 
 // TODO 2
 const validateNumberInput = (a, b, c) => {
   if(typeof a !== "number") {
-  throw new validationError("Argumen pertama harus number");
+  throw new ValidationError("Argumen pertama harus number");
   } else if(typeof b !== "number") {
-    throw new validationError("Argumen kedua harus number");
+    throw new ValidationError("Argumen kedua harus number");
   } else if(typeof c !== "number") {
-    throw new validationError("Argumen ketiga harus number");
+    throw new ValidationError("Argumen ketiga harus number");
   }
 }
 
@@ -157,7 +157,7 @@ const detectTriangle = (a, b, c) => {
   try {
     validateNumberInput(a, b, c);
   }catch(error) {
-    if(error instanceof validationError) {
+    if(error instanceof ValidationError) {
       console.log(error.message);
     }
   }
@@ -171,4 +171,4 @@ const detectTriangle = (a, b, c) => {
 
   return 'Segitiga sembarang';
 };
-console.log(detectTriangle(2, 3, 7));
+console.log(detectTriangle("usfig", 3, 7));

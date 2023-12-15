@@ -1,3 +1,4 @@
+// menghitung huruf vokal dari sebuah string diinisiasi ke dalam sebuah variabel
 const countVowels = str => {
   const vowels = "aeiouAEIOU";
   let count = 0;
