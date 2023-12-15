@@ -420,6 +420,70 @@ baik itu primitive value, function, array, object, atau class, kita gunakan keyw
 
 - Sekarang jalankan kode di atas pada project Anda. Apakah muncul eror seperti berikut? Jika iya, itu disebabkan karena berkas JavaScript yang kita buat tidak dianggap sebagai module. Saat ini, fitur ES6 module tidak secara default diaktifkan. 
 Pesan eror di atas menyebutkan dua cara bagaimana mengaktifkan ES6 module. Dua cara tersebut adalah menambahkan properti pada package.json atau dengan mengubah ekstensi .js menjadi .mjs. Mari kita gunakan cara pertama yang lebih sederhana. 
+Tambahkan properti type dengan nilai module pada berkas package.json. Lalu jalankan kembali program Anda. Seharusnya Node.js sudah berjalan dengan baik dan menampilkan output seperti berikut:
+
+||======================= Penanganan Error =======================||
+- Ketika mengembangkan sebuah aplikasi, sebagus apa pun kita membuatnya, akan selalu ada kemungkinan terjadi error atau crash. Entah terjadi karena kesalahan kita dalam menyusun logika kode, kesalahan input dari user, atau banyak alasan lainnya.
+Ketika aplikasi mengalami eror, aplikasi akan berhenti dan program setelahnya tidak akan dieksekusi.
+
+- Taruh kode yang berpeluang menimbulkan eror di dalam blok try. Apabila terjadi eror di dalam blok kode try, maka ia akan ditangkap dan ditangani oleh blok kode catch. Sementara, jika tidak terjadi eror pada kode, maka blok catch akan diabaikan.
+Kode di dalam blok try di atas tidak akan menghasilkan eror, sehingga kode di dalam blok catch akan diabaikan dan tidak dijalankan. Berikut ini adalah contoh kode yang menghasilkan eror:
+try {
+  console.log("Awal blok try");   // (1)
+  errorCode;                      // (2)
+  console.log("Akhir blok try");  // (3)
+} catch (error) {
+  console.log("Terjadi error!");  // (4)
+}
+
+- Baris kode (2) akan menghasilkan eror. Eksekusi kode di dalam blok try akan dihentikan, sehingga baris kode (3) tidak akan tereksekusi. Kemudian kode akan dilanjutkan ke baris (4) atau blok catch.
+
+- Selamat! Anda telah berhasil menangani eror dan menghindarkan aplikasi dari crash (Cobalah untuk menghapus sintaks try-catch dan melihat bagaimana aplikasi akan crash). Namun, bagaimana kita bisa tahu apa yang menyebabkan suatu program mengalami eror? 
+Jika ada informasi yang jelas tentunya akan sangat membantu kita atau pengguna nantinya bukan?
+
+- Sekarang perhatikan blok catch. Di sana catch memiliki satu parameter bernama error (nama variabel bisa diubah). Variabel error tersebut merupakan sebuah object yang menyimpan detail informasi dari error yang terjadi. Object error memiliki beberapa properti 
+utama di dalamnya, yaitu:
+  1. name : Nama error yang terjadi.
+  2. message : Pesan tentang detail error.
+  3. stack : Informasi urutan kejadian yang menyebabkan error. Umumnya digunakan untuk debugging karena terdapat informasi baris mana yang menyebabkan error.
+
+- Selain try dan catch, ada satu blok lagi yang ada dalam mekanisme error handling pada JavaScript, yaitu finally. Blok finally akan tetap dijalankan tanpa peduli apa pun hasil yang terjadi pada blok try-catch.
+
+||======================= Throwing Errors =======================||
+- ada kode di atas, fungsi JSON.parse akan melakukan parsing atau konversi dari variabel json (String) menjadi sebuah object. Skenario seperti di atas akan banyak kita temui ketika melakukan request ke API. Jalankan kode di atas pada text editor Anda. 
+Seharusnya aplikasi berjalan lancar tanpa menimbulkan eror.
+
+- Secara sintaksis, kode di atas tidak menimbulkan eror, sehingga blok catch akan diabaikan. Namun, tidak adanya properti name pada json sebenarnya sama saja dengan eror karena akan berdampak pada jalannya program kita. Untuk mengatasinya, 
+kita bisa menggunakan throw. Operator ini akan “melemparkan” eror pada program, sehingga eksekusi kode akan masuk pada blok catch. Berikut ini adalah contoh mengimplementasikan throw untuk menimbulkan eror kita sendiri:
+
+- Ketika properti user.name tidak memiliki nilai, maka program akan menghasilkan SyntaxError. Di dalamnya kita bisa menentukan pesan yang dapat membantu menjelaskan apa eror yang terjadi. Sekarang kita telah mengetahui ada banyak kemungkinan eror yang 
+bisa muncul dalam sebuah program. Tentunya akan sangat membantu jika kita bisa memberikan pesan yang sesuai kepada pengguna atau kepada diri kita sendiri untuk menemukan kesalahan dengan lebih mudah.
+
+||======================= Custom Errors =======================||
+- Awalnya, JSON.parse akan mengonversi data String menjadi object. Apabila format String tidak sesuai, maka fungsi tersebut akan melemparkan SyntaxError. Meskipun format atau sintaksis dari json string sudah sesuai, tetap ada kemungkinan data di dalamnya tidak lengkap. Saat ini kita masih menggunakan SyntaxError untuk menandai eror akibat data yang tidak lengkap, padahal secara sintaksis tidak ada masalah dari variabel json. Tentunya akan lebih baik jika kita punya Error yang lebih spesifik, bukan?
+
+- Untuk itu kita bisa membuat kelas Error kita sendiri dengan nama dan pesan yang lebih sesuai. Kelas ini merupakan turunan dari kelas Error yang sudah ada. Sebagai contoh, untuk mengecek validasi data dari json, kita bisa membuat kelas Error seperti ini: 
+class ValidationError extends Error {
+  constructor(message) {
+    super(message);
+      this.name = "ValidationError";
+  }
+}
+
+- Kelas ValidationError memiliki parameter constructor berupa message yang berisi pesan detail terkait erornya. Mari kita lihat penerapannya pada kode sebelumnya.
+
+- Beberapa poin yang sudah kita bahas di antaranya:
+  1. Penggunaan sintaksis try-catch untuk menangani eror.
+  2. Melemparkan eror sendiri yang tidak terdeteksi oleh JavaScript.
+  3. Membuat kelas sendiri untuk menandai eror yang tidak tersedia di JavaScript.
+
+
+
+
+
+
+
+
 
 
 
