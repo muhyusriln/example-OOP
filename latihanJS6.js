@@ -1,32 +1,36 @@
-class ValidationError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = "ValidationError";
-  }
+/* =========================== Custom Error =========================== */
+// code syntax asycnhronous function
+
+console.log("Selamat datang!");
+
+setTimeout(() => {
+  console.log("Terima kasih sudah mampir, silakan datang kembali!");
+}, 3000);
+
+console.log("Ada yang bisa dibantu?");
+
+function getUsers(isOffline, callback) {        
+  // simulasi network delay
+  setTimeout(() => {
+    const users = ["Haris", "Budi", "Setiawan", "Sukri"];
+
+    if(isOffline) {
+      callback(new Error('cannot retrieve users due offline'), null);
+      return;
+    }
+
+    callback(null, users);
+  }, 5000);
 }
 
-const json = '{ "age": 30 }';
-
-try {
-  const user = JSON.parse(json);
-
-  if (!user.name) {
-    throw new ValidationError("'name' is required.");
-  }
-  if (!user.age) {
-    throw new ValidationError("'age' is required.");
+function usersCallback(error, users) {             
+  if(error) {
+    console.log('proses failed:', error.message);
+    return;
   }
 
-  console.log(user.name);
-  console.log(user.age);
-} catch (error) {
-  if (error instanceof SyntaxError) {
-    console.log(`JSON Syntax Error: ${error.message}`);
-  } else if (error instanceof ValidationError) {
-    console.log(`Invalid data: ${error.message}`);
-  } else if (error instanceof ReferenceError) {
-    console.log(error.message);
-  } else {
-    console.log(error.stack);
-  }
+  console.log('proses success:', users);
 }
+
+getUsers(false, usersCallback);
+getUsers(true, usersCallback);

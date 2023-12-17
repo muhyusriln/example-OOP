@@ -460,7 +460,8 @@ kita bisa menggunakan throw. Operator ini akan “melemparkan” eror pada progr
 bisa muncul dalam sebuah program. Tentunya akan sangat membantu jika kita bisa memberikan pesan yang sesuai kepada pengguna atau kepada diri kita sendiri untuk menemukan kesalahan dengan lebih mudah.
 
 ||======================= Custom Errors =======================||
-- Awalnya, JSON.parse akan mengonversi data String menjadi object. Apabila format String tidak sesuai, maka fungsi tersebut akan melemparkan SyntaxError. Meskipun format atau sintaksis dari json string sudah sesuai, tetap ada kemungkinan data di dalamnya tidak lengkap. Saat ini kita masih menggunakan SyntaxError untuk menandai eror akibat data yang tidak lengkap, padahal secara sintaksis tidak ada masalah dari variabel json. Tentunya akan lebih baik jika kita punya Error yang lebih spesifik, bukan?
+- Awalnya, JSON.parse akan mengonversi data String menjadi object. Apabila format String tidak sesuai, maka fungsi tersebut akan melemparkan SyntaxError. Meskipun format atau sintaksis dari json string sudah sesuai, tetap ada kemungkinan data 
+di dalamnya tidak lengkap. Saat ini kita masih menggunakan SyntaxError untuk menandai eror akibat data yang tidak lengkap, padahal secara sintaksis tidak ada masalah dari variabel json. Tentunya akan lebih baik jika kita punya Error yang lebih spesifik, bukan?
 
 - Untuk itu kita bisa membuat kelas Error kita sendiri dengan nama dan pesan yang lebih sesuai. Kelas ini merupakan turunan dari kelas Error yang sudah ada. Sebagai contoh, untuk mengecek validasi data dari json, kita bisa membuat kelas Error seperti ini: 
 class ValidationError extends Error {
@@ -477,6 +478,36 @@ class ValidationError extends Error {
   2. Melemparkan eror sendiri yang tidak terdeteksi oleh JavaScript.
   3. Membuat kelas sendiri untuk menandai eror yang tidak tersedia di JavaScript.
 
+||======================= Pengenalan asynchronous =======================||
+- Kode pada sebuah program biasanya dijalankan secara berurutan dan saling menunggu hingga prosesnya selesai. Contoh, pada baris pertama kita memanggil fungsi X dan baris kedua kita memanggil fungsi Y, maka fungsi Y hanya akan dijalankan 
+setelah seluruh proses yang berhubungan dengan fungsi X selesai, begitu juga dengan baris kode selanjutnya. Proses yang dijalankan berdasarkan sebuah urutan dan saling menunggu disebut dengan proses synchronous.
+
+- Delay terjadi karena proses menjalankan fungsi generatePrimes() berjalan lambat dan bersifat synchronous, hingga pengguna merasakan hal itu. Pengalaman ini akan membuat pengguna risi, terlebih ketika harus melakukan hal lain sembari menunggu proses itu selesai.
+Itulah jadinya jika proses yang lama dijalankan secara synchronous. Proses selanjutnya perlu menunggu tahapan sebelumnya selesai. Solusi dari masalah ini adalah dengan menjalankan proses yang lama secara asynchronous.
+
+- Program asynchronous memungkinkan suatu proses berjalan sembari menunggu proses lainnya selesai. Umumnya, kita memanfaatkan asynchronous pada proses yang besar dan membutuhkan waktu lama, seperti mengambil data dari internet, menyimpan data ke database, 
+dan membaca data dari sebuah berkas.
+
+- Ada satu fungsi dalam JavaScript yang digunakan untuk menjadwalkan pemanggilan sebuah kode sekaligus membuatnya berjalan secara asynchronous, yakni setTimeout(). Fungsi tersebut menerima dua argumen dengan penjelasan berikut.
+  1. Argumen pertama merupakan sebuah fungsi yang akan dipanggil secara terjadwal dan asynchronous.
+  2. Argumen kedua merupakan delay waktu dalam satuan milisecond yang menentukan delay dari pemanggilan fungsi pada argumen pertama.
+
+- Fungsi setTimeout() merupakan cara paling dasar untuk membuat baris kode berjalan secara asynchronous. Kita akan gunakan setTimeout() dalam pembelajaran ini untuk menyimulasikan cara mendapatkan nilai dari sebuah proses yang membutuhkan waktu.
+
+Saat ini ada dua cara atau pola yang digunakan JavaScript dalam menangani proses asynchronous. Pola pertama yang akan kita bahas adalah callback.
+
+Pola Callback
+- Pola callback merupakan salah satu cara menangani proses asynchronous. Tidak hanya di JavaScript, pola ini juga digunakan pada bahasa pemrograman lainnya. Callback merupakan sebuah fungsi yang disisipkan pada argumen fungsi asynchronous 
+dan akan dipanggil ketika proses dinyatakan selesai. Fungsi callback akan membawa nilai-nilai yang dihasilkan dari proses asynchronous sehingga kita bisa memanfaatkan nilai tersebut.
+
+- Anggaplah getUsers() merupakan fungsi yang digunakan untuk mendapatkan data nama pengguna yang diambil dari internet. Kami menggunakan setTimeout() untuk menyimulasikan bahwa fungsi berjalan secara asynchronous. Anda juga bisa melihat bahwa fungsi 
+tersebut memanggil argumen callback ketika prosesnya selesai dan membawa data users.
+
+- Ketika menggunakan fungsi getUsers() kita perlu memanggil dengan memberikan argumen fungsi. Fungsi ini akan dipanggil ketika proses asynchronous selesai sekaligus membawa data users yang dihasilkan.  Di dalam cakupan fungsi inilah kita 
+bisa mengonsumsi nilai users yang dihasilkan dari proses asynchronous.
+
+- Proses yang dijalankan secara asynchronous, biasanya berpotensi menghasilkan error. Misalnya, sebuah fungsi yang mengambil data dari internet akan menghasilkan error ketika jaringan kita bermasalah. Contoh lainnya, ketika berkas tersebut tidak ditemukan, 
+fungsi yang membacanya akan menghasilkan error.Dengan alasan tersebut, pada fungsi callback selain membawa argumen data, ia juga membawa argumen error. Argumen error hanya akan memiliki nilai ketika proses asynchronous gagal atau mengalami gangguan.
 
 
 
