@@ -524,7 +524,38 @@ kesamaan lainnya terjadi pada hasil yang didapatkan. Di dunia nyata, janji bisa 
   2. Fulfilled merupakan keadaan Promise yang terpenuhi.
   3. Rejected merupakan keadaan Promise yang gagal terpenuhi.
 
+- Promise di JavaScript merupakan sebuah objek yang merepresentasikan operasi asynchronous. Dengan memanfaatkan Promise, fungsi yang berjalan secara asynchronous dapat ditangani dengan abstraksi yang lebih sederhana. Contohnya, alih-alih kita memanfaatkan callback yang 
+dikirim via argumen fungsi, kita bisa mengembalikan objek Promise langsung pada fungsi yang berjalan secara asynchronous.
 
+- Perhatikan kode di atas. Alih-alih fungsi getUsers() menerima callback sebagai argumen, dia mengembalikan objek Promise. Lalu, bagaimana dengan nilai yang belum dibawa oleh argumen callback? Nah, di sini Promise menawarkan penggantinya dengan memanfaatkan resolve dan reject. 
+Dalam kasus yang menyebabkan proses asynchronous error, kita bisa bawa error tersebut menggunakan reject, sedangkan pada kasus proses asynchronous berjalan sukses, kita bisa bawa nilai tersebut dengan resolve. Sampai di sini, apakah Anda sudah paham?
 
+- Catatan: Objek Promise dibuat dengan cara memanggil constructor Promise, yakni new Promise(). Kemudian di dalam constructor, Anda wajib memberikan argumen berupa fungsi yang di dalamnya terdapat operasi asynchronous. Fungsi tersebut juga diberikan akses terhadap dua argumen, 
+yaitu resolve dan reject. Kedua argumen ini bisa Anda manfaatkan dalam membawa hasil dari proses asynchronous berupa data ataupun error.
+
+- Setelah fungsi getUsers() diubah dari callback menjadi Promise-based, cara penggunaan fungsinya pun akan berubah. Fungsi yang mengembalikan objek Promise akan memiliki fungsi .then dan .catch. Fungsi tersebut digunakan untuk mengambil nilai yang dibawa oleh resolve dan reject. Gambarannya seperti ini.
+getUsers(false)
+  .then(users => console.log(users))
+  .catch(err => console.log(err.message));
+
+- Jalankan kode di atas, maka fungsi .then() akan terpanggil dan menampilkan data users pada console. Fungsi .catch() tidak akan terpanggil karena Promise tidak pernah berstatus rejected. Jika Anda ingin Promise menghasilkan status rejected, ubahlah nilai argumen pada pemanggilan getUsers() menjadi true.
+
+||======================= Asynchronous handling dengan promise =======================||
+- Kita sudah belajar cara mengubah callback menjadi Promise, sekarang kita akan coba mengubah callback menjadi Promise dengan pendekatan yang berbeda. Di Node.js, terdapat sebuah fungsi dari core module util yang dapat mengubah fungsi asynchronous callback-based menjadi Promise-based dengan mudah, ia bernama promisify.
+
+- Node.js menawarkan solusi, yaitu menggunakan fungsi promisify dari core module util. Dengannya, kita bisa secara mudah membuat fungsi baru yang mengimplementasikan Promise berdasarkan fungsi callback-based, contohnya seperti ini.
+
+- Namun, terdapat beberapa catatan ketika Anda hendak mengubah fungsi asynchronous callback-based menjadi Promise-based menggunakan util.promisify().
+  1. Promisify selalu menganggap callback berada pada argumen paling akhir sebuah fungsi asynchronous. Dengan begitu, Anda tidak dapat menggunakan promisify jika callback berada di posisi awal ataupun tengah argumen.
+  2. Promisify akan bekerja dengan baik jika callback memiliki struktur argumen callback(error, data). Jika callback memiliki struktur argumen di luar aturan tersebut, nilai yang dibawa oleh Promise ketika fulfilled dan rejected bisa tertukar.
+
+||======================= Asynchronous promise berantai =======================||
+- Dalam kehidupan sehari-hari, kita mungkin pernah melakukan chaining Promise tanpa disadari. Misalkan ketika ingin menonton film di bioskop, kita perlu melakukan beberapa tahap sebelum akhirnya bisa menikmati film tersebut. Misalnya, tahap pertama kita perlu menarik uang untuk nantinya membeli tiket bioskop. 
+Tahap ini bisa direpresentasikan menjadi sebuah fungsi bernama withdrawMoney(). Tahap kedua adalah membeli tiket bioskop yang dapat direpresentasikan dengan fungsi bernama buyCinemaTicket(). Fungsi tersebut menerima argumen uang yang sudah kita tarik. Jika uang yang diberikan pada argumen 
+kurang dari harga tiketnya, Promise akan di-reject dengan pesan “not enough money to buy ticket”. Jika nilai argumen cukup, Promise akan mengembalikan nilai “tiket-1”.
+
+- Pada kode di atas, kita bisa melihat bahwa tahapan pertama adalah memanggil fungsi withDrawMoney(), kemudian buyCinemaTicket(), dan terakhir goInsideCinema(). Setelah tahapan tersebut selesai, nilai akhir dari Promise akan ditampilkan dalam console dengan fungsi console.log(). Jika ada Promise yang di-reject pada salah satu tahapan, 
+ia akan langsung ditangkap oleh catch dan menampilkan error ke console dengan fungsi console.log(). Ada tips dalam melakukan Promise chaining di atas. Anda bisa membuat kode tampak lebih bersih dan singkat dengan memanfaatkan arrow function implisit return. Namun, tips ini hanya dapat digunakan jika arrow function 
+hanya memiliki satu baris kode saja.
 
 

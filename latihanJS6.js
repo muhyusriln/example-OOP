@@ -40,7 +40,7 @@ function usersCallback(error, users) {             // syntax secara default call
 getUsers(false, usersCallback);
 getUsers(true, usersCallback);
 
-/* =========================== Asynchronous function =========================== */
+/* =========================== Asynchronous function  promise =========================== */
 // code syntax asynchronous handling dengan promise
 
 function getUsers1(isOffline) {
@@ -61,3 +61,6 @@ function getUsers1(isOffline) {
   });
 }
 
+getUsers1(false)
+  .then(users => console.log(users))
+  .catch(err => console.log(err.message));
