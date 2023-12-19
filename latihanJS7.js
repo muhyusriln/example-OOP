@@ -65,7 +65,7 @@ function withDrawMoney(amount) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if(amount > 100) {
-        reject(new Error('not enought money to widraw'));
+        reject(new Error('not enought money to withdraw'));
       }
         resolve(amount);
     }, 5000);
@@ -95,17 +95,16 @@ function goInsideCinema(ticket) {
 }
 
 function watchMovie() {
-  withDrawMoney(20)
-    .then(money => buyCinemaTicket(money))
-    .then(ticket => goInsideCinema(ticket))
-    .then(result => console.log(result))
-    .catch(error => console.log(error.message));
+  withDrawMoney(50)
+    .then((money) => buyCinemaTicket(money))
+    .then((ticket) => goInsideCinema(ticket))
+    .then((result) => console.log(result))
+    .catch((error) => console.log(error.message));
 }
 
 watchMovie();
 
-
-
+// membuat fungsi untuk menghasilkan output dari semua proses
 // function watchMovie() {
 //   withDrawMoney(20)
 //     .then((money) => {
@@ -122,4 +121,54 @@ watchMovie();
 //     });
 // }
 
+// code syntax asynchronous promise.all()
 
+const promise1 = new Promise((resolve) => setTimeout(() => resolve(1), 1000));
+const promise2 = new Promise((resolve, reject) => setTimeout(() => reject(new Error('ups')), 2000));
+const promise3 = new Promise((resolve) => setTimeout(() => resolve(3), 3000));
+
+// Promise.all() untuk mengeksekusi ketiga promise tersebut secara paralel
+Promise.all([promise1, promise2, promise3])
+  .then((values) => console.log(values))
+  .catch((error) => console.log(error.message));
+
+// Promise.race() mengeluarkan output yang paling cepat penyelesaiannya
+Promise.race([promise1, promise2, promise3])
+  .then((values) => console.log(values))
+  .catch((error) => console.log(error.message));
+
+// Promise.allSettled() mengembalikan array of object dengan status resolved atau rejected
+Promise.allSettled([promise1, promise2, promise3])
+  .then((result) => console.log(result))
+  .catch((result) => console.log(result));
+
+// fulfilled sample
+const promiseResolve1 = new Promise((resolve) => setTimeout(() => resolve(1), 1000));
+const promiseResolve2 = new Promise((resolve) => setTimeout(() => resolve(2), 2000));
+const promiseResolve3 = new Promise((resolve) => setTimeout(() => resolve(3), 3000));
+// rejected sample
+const promiseReject1 = new Promise((resolve, reject) => setTimeout(() => reject(new Error('1')), 1000));
+const promiseReject2 = new Promise((resolve, reject) => setTimeout(() => reject(new Error('2')), 2000));
+const promiseReject3 = new Promise((resolve, reject) => setTimeout(() => reject(new Error('3')), 3000));
+//
+Promise.any([promiseResolve1, promiseResolve2, promiseResolve3])
+  .then((value) => console.log(value))
+  .catch((error) => console.log(error.message));
+
+Promise.any([promiseReject1, promiseReject2, promiseReject3])
+  .then((value) => console.log(value))
+  .catch((error) => console.log(error));
+
+// async function watchMovie() {
+//   try {
+//     const money = await withDrawMoney(50);
+//     const ticket = await buyCinemaTicket(money);
+//     const result = await goInideCinema(ticket);
+
+//     console.log(result);
+//   } catch(error) {
+//     console.log(error.message);
+//   }
+// }
+
+// watchMovie().then(() => console.log('done'));

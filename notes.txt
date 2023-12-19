@@ -558,4 +558,30 @@ kurang dari harga tiketnya, Promise akan di-reject dengan pesan “not enough mo
 ia akan langsung ditangkap oleh catch dan menampilkan error ke console dengan fungsi console.log(). Ada tips dalam melakukan Promise chaining di atas. Anda bisa membuat kode tampak lebih bersih dan singkat dengan memanfaatkan arrow function implisit return. Namun, tips ini hanya dapat digunakan jika arrow function 
 hanya memiliki satu baris kode saja.
 
+||======================= Promise Static Method =======================||
+- Promise memiliki beberapa static method yang dapat digunakan untuk mempermudah penggunaan dalam berbagai kasus. Pada materi ini, kami akan membahas empat static method dari class Promise yang umum digunakan, yaitu Promise.all, Promise.race, Promise.allSettled, dan Promise.any.
 
+* Promise.all
+- Promise.all() digunakan untuk mengeksekusi banyak Promise secara paralel. Method ini menerima sebuah array yang berisi beberapa Promise sebagai argumen. Fungsi ini akan mengembalikan sebuah Promise baru dan membawa nilai yang di-resolve dalam masing-masing Promise yang diletakkan pada array argumen.
+Jika terdapat rejection pada salah satu Promise, Promise.all() akan langsung menghasilkan rejected tanpa mengembalikan nilai Promise lain yang statusnya fulfilled.
+
+* Promise.race
+- Promise.race() digunakan untuk mengeksekusi beberapa Promise secara paralel seperti Promise.all(). Namun, ia hanya mengembalikan nilai Promise yang paling cepat menyelesaikan eksekusinya.
+
+- Ingat! Promise.race() hanya mengembalikan nilai Promise yang prosesnya paling cepat. Jadi, ia hanya mengembalikan nilai dari promise1. Lalu, bagaimana jika salah satu Promise ada yang rejected? Jika proses rejection merupakan proses yang paling cepat, ia akan mengembalikan rejection tersebut. Jika rejection tidak 
+kalah cepat dengan proses lain yang nilainya fulfilled, ia akan tetap mengembalikan nilai resolved tercepat.
+
+* Promise allSettled
+- Dari struktur objek yang dihasilkan, Anda bisa melihat bahwa Promise.allSettled() akan mengembalikan seluruh nilai Promise yang dijalankan, baik yang statusnya fulfilled ataupun rejected. Pada output console, Anda bisa melihat bahwa Promise.allSettled() mengembalikan array of object seperti yang sudah dijelaskan sebelumnya.
+
+* Promise any
+- Cara kerja method ini mirip seperti Promise.race(), tetapi hanya mengembalikan nilai tercepat yang berstatus fulfilled. Jika seluruh Promise berstatus rejected, method ini akan mengembalikannya dengan pesan “All Promises were rejected”.
+
+||======================= Asynchronous Handling dengan Sintaks Async dan Await =======================||
+-  Kita sepakat bahwa penanganan asynchronous dengan Promise jauh lebih baik daripada menggunakan callback. Dengan menggunakan Promise, kita bisa menulis kode lebih simpel dan mudah dibaca.
+Sekarang mari kita bayangkan, bagaimana jika kita bisa menangani proses asynchronous layaknya proses synchronous? Tentunya, ini akan membuat kode kita jauh lebih ringkas dan mudah dipahami karena tidak perlu menggunakan .then() dan .catch() untuk mendapatkan nilainya.
+
+- Untuk menggunakan fitur async dan await, kita perlu mengubah sebuah fungsi agar berjalan secara asynchronous dengan menambahkan kata kunci async pada awal fungsi. Setelah itu, di dalam fungsi tersebut, kita bisa mengambil data yang dihasilkan oleh Promise dengan menggunakan sintaks await. Sintaks await akan memberi 
+tahu JavaScript untuk menunggu proses Promise selesai sebelum mengeksekusi kode baris selanjutnya. Jadi, kita bisa melakukan Promise berantai tanpa perlu menggunakan .then().
+
+- Jika fungsi yang diberikan kata “async” mengembalikan Promise, bagaimana caranya mengontrol status Promise tersebut agar bernilai fulfilled atau rejected? Kata async secara implisit menggunakan return untuk mengubah status Promise menjadi fulfilled dan menggunakan throw untuk mengubah status Promise menjadi rejected.
