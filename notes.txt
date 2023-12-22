@@ -585,3 +585,14 @@ Sekarang mari kita bayangkan, bagaimana jika kita bisa menangani proses asynchro
 tahu JavaScript untuk menunggu proses Promise selesai sebelum mengeksekusi kode baris selanjutnya. Jadi, kita bisa melakukan Promise berantai tanpa perlu menggunakan .then().
 
 - Jika fungsi yang diberikan kata “async” mengembalikan Promise, bagaimana caranya mengontrol status Promise tersebut agar bernilai fulfilled atau rejected? Kata async secara implisit menggunakan return untuk mengubah status Promise menjadi fulfilled dan menggunakan throw untuk mengubah status Promise menjadi rejected.
+
+- Fungsi watchMovie() tidak lagi menampilkan nilainya pada console.log(), tetapi mengembalikan nilai result dan bisa juga membangkitkan error. Kemudian dalam memanggil fungsinya, kita bisa menggunakan .then() dan .catch() untuk mengambil nilai yang di-resolve ataupun di-reject. Hal ini membuktikan bahwa 
+kata async membuat fungsi mengembalikan Promise secara implisit.
+
+- Sintaks async dan await memiliki beberapa keuntungan dibandingkan dengan penggunaan callback dan Promise secara langsung.
+  1. Lebih mudah dipahami dan ditulis.
+Sintaks async dan await memungkinkan kita untuk menulis kode yang menangani asynchronous dengan cara yang sama seperti synchronous. Tentu ini membuat kode lebih mudah dipahami dan ditulis.
+  2. Terhindar dari callback.
+Penggunaan Promise secara langsung pun tidak terlepas dari callback, seperti .then() dan .catch(). Namun, dengan async dan await, kita bisa terlepas dari pola callback.
+  3. Lebih mudah dalam mengelola error.
+Async dan await benar-benar membuat pengalaman asynchronous layaknya synchronous, hingga dalam penanganan error-nya pun menggunakan beberapa hal yang sudah ada, seperti try, catch, dan throw.

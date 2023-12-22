@@ -1,13 +1,20 @@
-async function watchMovie() {
-  try {
-    const money = await withDrawMoney(10);
-    const ticket = await buyCinemaTicket(money);
-    const result = await goInideCinema(ticket);
+const { withDrawMoney, buyCinemaTicket, goInsideCinema } = require('./utilsJS8.js');
 
-    console.log(result);
-  } catch(error) {
-    console.log(error.message);
+async function watchMovie(amount) {
+  try {
+    const money = await withDrawMoney(amount);
+    const ticket = await buyCinemaTicket(money);
+    const result = await goInsideCinema(ticket);
+    
+    return result;
+  } catch(err) {
+    throw(err);
   }
 }
 
-watchMovie().then(() => console.log('done'));
+watchMovie(10)
+  .then((result) => console.log(result))
+  .catch((err) => console.log(err.message));        // not enought money to buy ticket
+watchMovie(50)
+  .then((result) => console.log(result))            // enjoy the movie
+  .catch((err) => console.log(err.message));
