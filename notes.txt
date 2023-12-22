@@ -596,3 +596,42 @@ Sintaks async dan await memungkinkan kita untuk menulis kode yang menangani asyn
 Penggunaan Promise secara langsung pun tidak terlepas dari callback, seperti .then() dan .catch(). Namun, dengan async dan await, kita bisa terlepas dari pola callback.
   3. Lebih mudah dalam mengelola error.
 Async dan await benar-benar membuat pengalaman asynchronous layaknya synchronous, hingga dalam penanganan error-nya pun menggunakan beberapa hal yang sudah ada, seperti try, catch, dan throw.
+
+||======================= Installing packages =======================||
+- Umumnya, semua package harus diinstal secara lokal. Ini memastikan setiap project atau aplikasi di komputer kita memiliki package dan versi yang sesuai dengan kebutuhan. Untuk menginstal package secara lokal caranya sama seperti yang telah kita bahas sebelumnya, yaitu dengan perintah npm install.
+
+- Jalankan perintah berikut pada terminal/command prompt Anda (pastikan perintah dijalankan di direktori project): npm install lodash
+
+- Untuk memasang package sebagai devDependencies, kita bisa menambahkan parameter --save-dev pada perintah npm install: npm install <package-name> --save-dev
+
+- Sehingga, untuk menggunakan kode dari package lodash yang telah kita pasang, tambahkan kode berikut pada berkas index.js: import _ from 'lodash';
+
+- Contoh, jika kita ingin menghapus package lodash dari project, berarti tuliskan perintah: npm uninstall lodash
+
+||======================= Pengenalan JavaScript Testing =======================||
+- Sebuah proses pengujian perangkat lunak dapat dilakukan secara:
+* Manual
+Proses pengujian secara manual oleh seorang yang ditunjuk sebagai test, atau sebagian pengguna yang memang mendapatkan akses untuk pengujian pre-release. Proses ini biasanya berkaitan dengan usability, accessibility dari sebuah aplikasi.
+
+* Otomatis
+Proses pengujian secara otomatis dilakukan oleh komputer dengan menuliskan script khusus, biasanya dilakukan oleh software engineer langsung ataupun oleh seorang QA Engineer. Proses ini biasanya berkaitan dengan fungsionalitas dari sebuah aplikasi.
+
+- Dalam penulisan kode pengujian, kita dapat menggunakan library tambahan untuk mempermudah penulisan kode pengujian.
+
+- Jest merupakan salah satu framework testing paling populer untuk menuliskan kode pengujian pada bahasa pemrograman JavaScript. Jest dapat digunakan untuk menuliskan script testing pada aplikasi backend maupun frontend.
+
+- Kita akan mencoba untuk menuliskan sebuah kode pengujian menggunakan framework jest.
+  1. Membuat proyek baru dengan direktori bernama latihantesting
+  2. Setelah masuk ke direktori tersebut, kita dapat melakukan init project kita. ketik: npm init
+  3. Setelah proyek tersebut diinisialisasi. Selanjutnya kita dapat melakukan instalasi library framework jest. ketik: npm install --save-dev jest
+  4. Setelah proses instalasi selesai, buka proyek di code editor.
+  5. Pada file package.json, kita tambahkan script untuk test dengan cara menambahkan baris kode berikut: 
+  {
+    "scripts": {
+      "test": "jest"
+    }
+  }
+
+- Dari kedua contoh kode di atas, kita akan melakukan simulasi pengujian unit test & integration test. Penulisan kode pengujian dapat dilakukan dengan memulai kerangka testcase yang sudah kita singgung diatas.
+
+
