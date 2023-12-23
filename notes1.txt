@@ -1,0 +1,21 @@
+||======================= DOM JavaScript =======================||
+
+- Untuk mengakses sebuah elemen HTML melalui DOM, kita gunakan objek yang bernama document. Objek ini berisi semua elemen yang berada pada HTML atau keseluruhan halaman yang terlihat pada jendela browser saat itu. Jika kita coba mengakses nilai dari global obyek document pada console browser. Cukup dengan objek document, 
+kita dapat mengakses keseluruhan konten pada HTML yang terdapat root element <html>. Sehingga, jika dicermati kembali di dalamnya terdapat elemen lainnya seperti <head> dan <body>.
+
+- Secara sekilas isi dari objek document hanyalah terlihat seperti isi dari sebuah berkas HTML saja. Namun, layaknya sebuah objek JavaScript, objek document memiliki beberapa properti dan method yang bisa kita gunakan untuk mengakses koleksi elemen maupun elemen tertentu.
+
+- Manipulasi DOM memberikan kemampuan bagi kita untuk membuat elemen-elemen HTML melalui kode JavaScript. Selain itu, melalui DOM kita mampu membuat konten HTML. Sekarang mari kita mulai dengan membahas method createElement(). Dengan method tersebut, kita bisa membuat sebuah elemen HTML yang benar-benar baru 
+tanpa memanipulasi isi konten berkas HTML. Contohnya, jika kita ingin membuat sebuah elemen HTML dengan tag <p>, sintaksnya adalah sebagai berikut:
+const newElement = document.createElement('p');
+
+* JavaScript Automatic Type Conversion pada setAttribute()
+Jika kita perhatikan pada contoh mengubah atribut "width" maupun "height", parameter kedua menggunakan string yang berisi angka. Namun, apakah Anda mengetahui bahwa kita juga bisa memasukkan tipe data Number daripada string? Jika nilai dari sebuah atribut hanya terdiri dari angka saja (contohnya nilai dari width dan height di atas), 
+maka kode: 
+gambar.setAttribute('width', '300');
+- Mengapa hal ini diperbolehkan? Semua ini memungkinkan karena JavaScript memiliki fitur yang bernama automatic type conversion yang mengkonversi sebuah nilai jika dibutuhkan.
+
+
+
+
+

@@ -345,7 +345,7 @@ Kita cukup fokus pada “what to solve” alias apa yang ingin kita selesaikan a
   2. Hanya bergantung pada argumen yang diberikan.
   3. Tidak menimbulkan efek samping.
 
-||======================= Immotability =======================||
+||======================= Immutability =======================||
 - Konsep yang kedua adalah immutability. Immutable berarti sebuah objek tidak boleh diubah setelah objek tersebut dibuat. Kontras dengan mutable yang artinya objek boleh diubah setelah objek tersebut dibuat.
 
 - Konsep immutability sangat kental pada paradigma FP. Anda bisa lihat sebelumnya pada contoh penggunaan array map. Ketika menggunakan array.map(), alih-alih ia mengubah nilai dari array itu sendiri, malah ia membuat atau menghasilkan array baru.
