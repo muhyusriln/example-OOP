@@ -16,6 +16,99 @@ gambar.setAttribute('width', '300');
 - Mengapa hal ini diperbolehkan? Semua ini memungkinkan karena JavaScript memiliki fitur yang bernama automatic type conversion yang mengkonversi sebuah nilai jika dibutuhkan.
 
 
+||======================= Mengubah Konten HTML - Memanipulasi Konten =======================||
+- JavaScript mampu mengubah atribut dari sebuah elemen. Namun, ada satu kemampuan JavaScript yang tidak kalah hebat, yakni memanipulasi konten atau isi elemen itu sendiri. Terdapat beberapa cara untuk memanipulasi konten elemen seperti innerText, innerHTML dan style.property. Dari sini, kita akan coba melihat perbedaan 
+antara innerHTML vs. innerText dalam elemen <div> tersebut. Pertama, kita akses elemen tersebut dengan memanggil method getElementById().
+const links = document.getElementById('links');
+
+- Kemudian jika kita panggil properti innerHTML, links.innerHTML dan kita panggil properti innerText links.innerText. Apakah Anda melihat kemiripannya? Ya, pada kedua properti tersebut mengeluarkan isi konten elemen yang dituju. Lalu, apa perbedaannya? Perbedaannya adalah innerHTML mengambil semua konten dalam sebuah elemen 
+beserta tag-tag HTML yang ada, sedangkan innerText hanya mengambil teks tanpa tag-tag HTML yang ada.
+
+- Styling yang kita ingin ubah pada asalnya bernama "border-radius", tapi kenapa menjadi "borderRadius"? Singkatnya, nama properti dari objek DOM mengikuti standar penamaan variabel khusus. Penamaannya tidak boleh mengandung tanda "-". Sehingga, nama properti CSS yang memiliki tanda "-" diubah menjadi bentuk camelCase. 
+Contohnya border-radius menjadi borderRadius, font-family menjadi fontFamily, font-size menjadi fontSize, dan seterusnya.
+
+||======================= Macam-macam event =======================||
+- Walau istilah event terkesan sangat abstrak, kita dapat menggolongkan beberapa event menjadi beberapa kategori berdasarkan sumber dari mana event tersebut terjadi. Contohnya kejadian yang berhubungan dengan kursor mouse, keyboard, kegiatan copy sebuah elemen teks pada berkas HTML, atau bahkan dari ukuran window browser.
+ * Window Events
+ Window Events adalah kejadian-kejadian yang berasal dari browser alias pada window.
+ onload: Event ini akan terjadi setelah halaman web selesai diunduh dan ditampilkan.
+ onpageshow: Event ini akan terjadi jika halaman web kembali dikunjungi kembali (berbeda dengan onload, karena event onload tidak akan terjadi jika halaman web diambil dari cache).
+ onresize: Event ini akan terjadi jika window browser di-resize oleh user atau oleh hal lainnya.
+
+ * Form Events
+ Form Events adalah kejadian-kejadian yang berasal dari sebuah elemen HTML dengan tag <form> (kita akan mempraktikkan penggunaan tag <form> pada materi Form Event.)
+ onreset: Event ini akan terjadi ketika user menekan tombol ‘reset’’ pada elemen form.
+ onsubmit: Event ini akan terjadi ketika user menekan tombol ‘submit’’ pada form.
+
+ * Keyboard Events
+ Keyboard Events adalah kejadian-kejadian yang berasal dari ditekan atau dilepasnya tombol pada keyboard.
+ onkeydown: Event ini akan terjadi ketika sebuah tombol pada keyboard ditekan.
+ onkeypress:	Event ini terjadi setelah onkeydown, di mana tombol masih dalam keadaan ditekan. Event ini tidak dapat mendeteksi tombol fungsi seperti CTRL, SHIFT, ALT, ESC, BACKSPACE, dan sebagainya.
+ onkeyup: Event ini akan terjadi ketika sebuah tombol pada keyboard dilepas.
+
+ * Clipboard Events
+ Clipboard Events adalah kejadian-kejadian yang berasal dari proses cut, copy, atau paste sebuah elemen..
+ oncopy: Event ini akan terjadi ketika kita melakukan proses copy.
+ oncut: Event ini akan terjadi ketika kita melakukan proses cut.
+ onpaste:Event ini akan terjadi ketika kita melakukan proses paste.
+
+* Mouse Events
+ Mouse Events adalah kejadian-kejadian yang berasal dari kegiatan klik mouse.
+ onclick: Event ini akan terjadi ketika kita menekan elemen tertentu dengan cursor.
+ ondblclick: Event ini akan terjadi ketika kita menekan elemen tertentu dua kali berturut-turut dengan cursor.
+ onmouseover: Event ini akan terjadi ketika cursor kita berada di atas sebuah elemen tertentu.
+
+- Pada umumnya, menambahkan sebuah event handler pada sebuah event yang berasal dari sebuah elemen HTML tertentu akan menggunakan pendekatan seperti berikut. 
+elemen.{nama_event} = namaFunction();
+
+- Pada kasus menulis event handler onload di sini, kode yang digunakan untuk memberikan event pada elemen body adalah sebagai berikut.
+document.body.onload = welcome;
+
+- Pada tag <script>, deklarasikan function increment() yang akan melakukan proses increment atau kenaikan angka sebagai jumlah berapa kali user menekan tombol. Ini dilakukan melalui event onclick. 
+Silakan tambahkan kode seperti berikut.
+function increment() {
+  document.getElementById('count').innerText++;
+}
+
+- Pada kode di atas, kita memerintahkan agar teks melakukan proses increment (++) pada elemen yang memiliki atribut id dengan value count. Silakan tambahkan event handler pada elemen button seperti berikut.
+document.getElementById('incrementButton').onclick = increment;
+
+||======================= menambahkan event handler =======================||
+- Method addEventListener() menerima beberapa parameter, tetapi yang perlu kita ketahui sementara adalah parameter pertama dan kedua. Parameter pertama harus diisi dengan tipe event yang digunakan, yang mana akan men-trigger atau memancing kode JavaScript untuk menjalankan sebuah fungsi khusus. Function khusus diletakkan 
+pada parameter kedua yang akan dijalankan ketika tipe event yang didefinisikan terjadi. 
+
+- Ada satu aturan yang perlu kita ketahui, yaitu nama event yang kita definisikan tidak seperti sebelumnya menggunakan onload dan onclick (tanpa imbuhan "on"). Namun, kita dapat menuliskannya secara langsung. Sebagai contoh function onload menjadi ‘load’, function onclick menjadi ‘click’. Untuk daftar lengkap 
+event apa saja yang didukung dapat dilihat di sini: https://developer.mozilla.org/en-US/docs/Web/Events.
+
+- Mungkin Anda bertanya-tanya, "mengapa event load dipasangkan ke obyek window?". Jawabannya adalah method addEventListener() tidak bisa bekerja pada tag <body>. Lantas, jika sama dengan inline event handler, apa keuntungan lebih yang ditawarkan method addEventListener()? Kelebihannya adalah kita bisa menambahkan satu 
+atau lebih fungsi sebagai event handler. Fitur itulah yang tidak dapat dilakukan oleh event handler inline.
+  element.onclick = fungsiA;
+  element.onclick = fungsiB;
+
+- Selain itu, terdapat permasalahan lagi jika tidak menggunakan addEventListener. Kode di atas, kita memanggil function onclick dan melakukan assignment dengan fungsiA dan fungsiB. Sayangnya, fungsiA ini akan ter-overwrite alias tertimpa fungsiB. Oleh karena itu, jika elemen di-klik, hanya fungsiB saja yang dijalankan. 
+Bagaimana cara kita menemukan solusi agar fungsiA dan fungsiB dijalankan ketika elemen di-klik? Gunakanlah method addEventListener()!
+  element.addEventListener('click', fungsiA);
+  element.addEventListener('click', fungsiB);
+
+- Apa yang dimaksud dengan Custom Event? Custom Event pada materi ini merujuk kepada penggunaan class Event() untuk membuat event dengan nama yang sudah kita tentukan sendiri. Misal, sebelumnya kita telah menggunakan nama-nama event yang sudah “dikenal” oleh JavaScript yakni seperti “click” dan “load’. Apakah mungkin 
+jika kita membuat event sendiri? Misalnya, event dengan nama "eventBuatanKita"? Jawabannya, sangat mungkin!
+// membuat custom event
+const eventBuatan = new Event('eventBuatanKita');
+// meletakkannya pada sebuah method addEventListener()
+element.addEventListener('eventBuatanKita'); 
+
+- Jika Anda bertanya-tanya, “Kenapa kita harus mempelajari custom event?" Jawabannya adalah tidak seperti event yang biasanya “dikenali” oleh method addEventListener, custom event memungkinkan kita untuk menjalankan sebuah event handler setelah sebuah event handler lain selesai dipanggil. Untuk mencatat 
+custom event apa saja yang telah dibuat, sebaiknya buatlah sebuah variabel konstanta yang menyimpan semua nama custom event. Hal tersebut dilakukan supaya tidak ada kejadian yang tidak diinginkan. Salah satu resikonya adalah ter-overwrite dengan suatu custom event yang sama sehingga kita perlu memberitahu 
+dan membuat kesepakatan dengan rekan programmer lain tentang hal tersebut.
+
+
+
+
+
+
+
+
+
 
 
 
