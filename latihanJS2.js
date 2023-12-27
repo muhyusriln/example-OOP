@@ -168,23 +168,3 @@ console.log(addCounter());
 console.log(addCounter());
 
 console.log("End of example declare a function global variable");
-
-// code syntax Default Paramter
-/* ================= Rest Parameter ================= */
-// code syntax Default Paramter
-/* ================= Rest Parameter ================= */
-// code syntax Default Paramter
-/* ================= Rest Parameter ================= */
-// code syntax Default Paramter
-/* ================= Rest Parameter ================= */
-// code syntax Default Paramter
-/* ================= Rest Parameter ================= */
-// code syntax Default Paramter
-/* ================= Rest Parameter ================= */
-// code syntax Default Paramter
-
-
-
-
-
-
